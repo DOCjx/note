@@ -1,0 +1,131 @@
+ {
+   "errCode": 200,
+   "errMsg": "",
+   "data": [
+    {
+      "id": 1,
+      "pid": 0,
+      "name": "前端开发",
+      "priority": 1,
+      "img" : "blue1.png"
+    },
+    {
+      "id": 2,
+      "pid": 0,
+      "name": "后台开发",
+      "priority": 2,
+      "img" : "gray.png"
+    },
+    {
+      "id": 3,
+      "pid": 0,
+      "name": "数据处理",
+      "priority": 4,
+      "img" : "yellow.png"
+    },
+    {
+      "id": 4,
+      "pid": 0,
+      "name": "图像处理",
+      "priority": 3,
+      "img" : "green.png"
+    },
+    {
+      "id": 5,
+      "pid": 0,
+      "name": "开源作品",
+      "priority": 3,
+      "img" : "blue.png"
+    },
+    {
+      "id": 6,
+      "pid": 1,
+      "priority": 2,
+      "name": "HTML/CSS"
+    },
+    {
+      "id": 7,
+      "pid": 1,
+      "priority": 2,
+      "name": "JavaScript"
+    },
+    {
+      "id": 8,
+      "pid": 1,
+      "priority": 2,
+      "name": "HTML5"
+    },
+    {
+      "id": 9,
+      "pid": 2,
+      "priority": 1,
+      "name": "php(Thinkphp/CI)"
+    },
+    {
+      "id": 10,
+      "pid": 2,
+      "priority": 2,
+      "name": "nodeJs"
+    },
+    {
+      "id": 11,
+      "pid": 3,
+      "priority": 2,
+      "name": "MySql"
+    },
+    {
+      "id": 12,
+      "pid": 3,
+      "priority": 2,
+      "name": "MongoDB"
+    },
+    {
+      "id": 13,
+      "pid": 4,
+      "priority": 2,
+      "name": "PhotoShop"
+    },
+     {
+       "id": 14,
+       "pid": 1,
+      "priority": 2,
+       "name": "JavaScript"
+     },
+     {
+       "id": 15,
+       "pid": 1,
+      "priority": 1,
+       "name": "sea.js"
+     },
+     {
+       "id": 16,
+       "pid": 1,
+      "priority": 2,
+       "name": " AngularJS"
+     },
+     {
+       "id": 17,
+       "pid": 1,
+      "priority": 2,
+       "name": "react.js"
+     },
+     {
+       "id": 18,
+       "pid": 1,
+      "priority": 2,
+       "name": "jquery"
+     },
+     {
+       "id": 19,
+       "pid": 5,
+      "priority": 2,
+       "name": "HyAdmin"
+     },
+     {
+       "id": 20,
+       "pid": 5,
+      "priority": 2,
+       "name": "HyRiaWeb"
+     }
+   ]
+ }

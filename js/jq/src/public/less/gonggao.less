@@ -1,0 +1,43 @@
+@color:white;
+@color1:#ddd;
+@height1:25px;
+@height2:80px;
+	.bordered{
+		border-bottom: 1px solid @color1;
+		margin:0 -30px 0 0;
+		.row{
+			.laba{position:absolute;
+					top:1px;
+					left:5%;
+					font-size:1.3em;}
+			.homyi{position: relative;
+					left:20px;
+					font-size:1.1em;
+					font-family: "微软雅黑";}
+			#gdong{position:relative;
+					height:28px;
+					top:1px;
+					left:-30px;
+					overflow:hidden;
+					font-size:1em;
+					font-family: "微软雅黑";
+					}
+			#gdong ul{
+					text-align:center;
+					list-style:none;
+					margin-left:-33px;
+					}
+			#gdong ul li{
+					height:@height2/2;
+			}
+			#tup{position:relative;
+					top:0;
+					left:@height2/3;
+					cursor:pointer;}
+			#tdown{position:relative;
+					top:-8px;
+					left:@height2/3;
+					cursor:pointer;}
+		}
+}
+

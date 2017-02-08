@@ -1,0 +1,99 @@
+.border-left {
+  color: red;
+}
+#picture .picrow {
+  position: relative;
+  height: 292px;
+  overflow: hidden;
+  transition: all 1s;
+  -moz-transition: all 1s;
+  -webkit-transition: all 1s;
+  -o-transition: all 1s;
+}
+#picture .picrow ul {
+  position: absolute;
+  left: 0;
+}
+#picture .picrow ul li {
+  float: left;
+  position: relative;
+  margin: 10px 20px 10px 0px;
+  cursor: pointer;
+  height: 275px;
+  width: 225px;
+  box-shadow: 0px 1px 7px #BCBCBC;
+  border-radius: 4px;
+}
+#picture ul li img {
+  width: 225px;
+  height: 275px;
+  border-radius: 4px;
+}
+#picture ul li .exp-info {
+  position: absolute;
+  top: 192px;
+  padding: 5px 10px;
+  color: #FFF;
+  text-shadow: 0px 1px 1px #555;
+  z-index: 102;
+  overflow: hidden;
+}
+#picture ul li .exp-info h3 {
+  font-size: 18px;
+  line-height: 0;
+}
+#picture ul li .exp-info h3 a {
+  color: #FFF;
+  font-family: "Adelle", "Georgia", "PingFang SC", "Microsoft YaHei", "SimSun", "sans-serif";
+  font-weight: normal;
+}
+.mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 225px;
+  height: 275px;
+  border-radius: 4px;
+  background-image: -webkit-linear-gradient(top, transparent, #000);
+  background-image: -moz-linear-gradient(top, transparent, #000);
+  background-image: linear-gradient(top, transparent, #000);
+  background-color: rgba(0, 0, 0, 0.2);
+  z-index: 99;
+  opacity: 0.2;
+  -moz-transition: opacity 0.15s ease-in 0.15s;
+  -webkit-transition: opacity 0.15s ease-in 0.15s;
+  transition: opacity 0.15s ease-in 0.15s;
+}
+.mask:hover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 225px;
+  height: 275px;
+  border-radius: 4px;
+  background-image: -webkit-linear-gradient(top, transparent, #000);
+  background-image: -moz-linear-gradient(top, transparent, #000);
+  background-image: linear-gradient(top, transparent, #000);
+  background-color: rgba(0, 0, 0, 0.2);
+  z-index: 99;
+  opacity: 0.8;
+  -moz-transition: opacity 0.15s ease-in 0.15s;
+  -webkit-transition: opacity 0.15s ease-in 0.15s;
+  transition: opacity 0.15s ease-in 0.15s;
+}
+#picture ul li .exp-info p {
+  margin: 0;
+  padding: 0;
+  color: #fff;
+  font-family: Helvetica, Arial, "PingFang SC", "Microsoft YaHei", "WenQuanYi Micro Hei", "tohoma,sans-serif";
+  font-size: 12px;
+  line-height: 1.5;
+}
+.label {
+  font-size: 20px;
+  border-left: 4px solid #dd5862!important;
+  border-radius: 0!important;
+  position: absolute;
+  top: 8px;
+  color: #FCFCFC;
+}

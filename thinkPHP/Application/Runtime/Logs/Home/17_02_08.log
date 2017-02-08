@@ -1,0 +1,56 @@
+[ 2017-02-08T14:53:01+08:00 ] ::1 /abc/Homyit/Fun/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000032s ]
+INFO: [ app_init ] --END-- [ RunTime:0.023384s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000843s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001007s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\wamp\www\abc\Homyit\Fun\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `game_category` [ RunTime:0.273478s ]
+SQL: SELECT * FROM `game_category` WHERE `status` = 1  [ RunTime:0.001753s ]
+SQL: SHOW COLUMNS FROM `game_talk` [ RunTime:0.048936s ]
+SQL: SELECT `name`,`content`,`upload_time` FROM `game_talk` INNER JOIN game_user ON game_talk.pid = game_user.user_id  WHERE `data_status` = 1 ORDER BY upload_time DESC LIMIT 4   [ RunTime:0.122131s ]
+NOTIC: [8] Undefined index: id D:\wamp\www\abc\Homyit\Fun\Application\Home\Controller\BaseController.class.php 第 11 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000154s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000389s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.163440s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.163791s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001085s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001295s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001328s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001546s ]
+
+[ 2017-02-08T14:53:03+08:00 ] ::1 /abc/Homyit/Fun/index.php/Home/Index/userLogin.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000024s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000596s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000750s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000864s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\wamp\www\abc\Homyit\Fun\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `game_category` [ RunTime:0.018101s ]
+SQL: SELECT * FROM `game_category` WHERE `status` = 1  [ RunTime:0.000399s ]
+SQL: SHOW COLUMNS FROM `game_talk` [ RunTime:0.005164s ]
+SQL: SELECT `name`,`content`,`upload_time` FROM `game_talk` INNER JOIN game_user ON game_talk.pid = game_user.user_id  WHERE `data_status` = 1 ORDER BY upload_time DESC LIMIT 4   [ RunTime:0.004199s ]
+NOTIC: [8] Undefined index: id D:\wamp\www\abc\Homyit\Fun\Application\Home\Controller\BaseController.class.php 第 11 行.
+SQL: SHOW COLUMNS FROM `game_user` [ RunTime:0.004987s ]
+NOTIC: [8] Undefined index: id D:\wamp\www\abc\Homyit\Fun\Application\Home\Model\UserModel.class.php 第 6 行.
+SQL: SELECT `name` FROM `game_user` WHERE `id` = null LIMIT 1   [ RunTime:0.017433s ]
+NOTIC: [8] Undefined index: id D:\wamp\www\abc\Homyit\Fun\Application\Home\Controller\IndexController.class.php 第 10 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000092s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000206s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.026328s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.026441s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000518s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000625s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000755s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000875s ]
+

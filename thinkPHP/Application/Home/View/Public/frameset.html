@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>小游戏</title>
+<link href="__PUBLIC__/assets/global/css/home.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+	<div id="nav">
+		<a href="#" style="float:left"><img src="__PUBLIC__/assets/global/img/logo.png" style="margin:5px 0 0 17px;float:left;width:55px;height:55px;" alt="logo">
+			<div id="talk">
+				<ul>
+					<h3 style="text-algin:center">最新评论</h3>
+					<volist name="talk" id="vo">
+						<li>
+							<div>
+								<span>玩家：{$vo['name']}</span>
+							</div>
+								{$vo['content']}
+							<div>
+								{$vo['upload_time']|date='Y-m-d H:i:s',###}
+							</div>
+						</li>
+					</volist>
+				</ul>
+				<div id="talkfooter">
+					<form action="{:U('Index/addTalk')}">
+						<textarea name="content">做一个乐于分享的好孩纸！
+						</textarea>
+						<input type="submit">
+					</form>
+				</div>
+			</div>
+		</a>
+	</div>
+	<div class="nav">
+		<ul>
+			<volist name="nav" id="vo">
+				<empty name="vo['c']">
+					<li><a href="{:U('Index/category',array('id'=>$vo['id']))}">{$vo['name']}</a></li>
+				<else/>
+					<li>
+						<a href="#">{$vo['name']}</a>
+						<div id="outUl">
+							<ul>
+								<volist name="vo['c']" id="ch">
+									<li><a href="{:U('Index/category',array('id'=>$ch['id']))}">{$ch['name']}</a>
+									</li>
+								</volist>
+							</ul>
+						</div>
+					</li>
+				</empty>
+			</volist>
+		</ul>
+		<div class="top">
+				<a href="{:U('Index/userLogin')}">登入</a>
+				<a href="{:U('Index/logout')}">注销</a>
+		</div>
+	</div>
+	<block name="body">
+	</block>
+</body>
+</html>

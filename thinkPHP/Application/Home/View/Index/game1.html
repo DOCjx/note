@@ -1,0 +1,28 @@
+<extend name="public:frameset"/>
+<block name="body">
+    <div id="background">
+        <h1>心灵感应</h1>
+        <form method="post" action="{:U('Index/game1')}">
+        <div id="content">
+            <volist name="num" id="vo">
+                <label for="card{$key}">
+                    <div class="card">
+                    <input type="checkbox" value="1" <empty name="session[$key]">你还没输入哦！<else />checked</empty> id="card{$key}" name="card{$key}" /><br>
+                        <volist name="vo" id="content">
+                            <span>{$content}</span>
+                        </volist>
+                    </div>
+                </label>
+            </volist>
+            <div class="card1">心中想着1~31中任意一个数字选择数字所在的所有卡片，计算机将会猜出你想的数字！
+            </div>
+        </div>
+        <div id="result">
+            <span><empty name="result">你还没输入哦！<else />你就说你是不是在想着：{$result}这个数字呢？</empty></span>
+        </div>
+        <div id="footer">
+            <input type="submit" value="开始游戏" id="sub" name="sub">
+        </div>
+        </form>
+    </div>
+</block>

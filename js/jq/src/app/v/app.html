@@ -1,0 +1,220 @@
+<script export="header" type="text/template">
+    <div class="index-top">
+        <div class="nav-wrap">
+            <div class="logo"> 
+                <img src="public/images/Logo2.png" alt="">
+            </div>
+            <div class="top-nav p-r">
+                <div class="navcatebtn p-a">
+                    <i class="list-btn icon-font">&#xe603;</i> 
+                    <span class="list">就业方向</span>
+                </div>
+                <div class="catedialog p-a">
+                    <div class="curbg" id="curbg"></div>
+                    {{ it.topicList.forEach(function(item) { }}
+                    <div class="item" id="item{{=item.id}}" data-id="item{{=item.id}}" data-go-part-reload="/c/app/side&id={{=item.id}}">
+                        <div class="inn">
+                            <a href="javascript:;" style="text-decoration:none;">{{=item.name}}</a>
+                            <p>
+                                {{item.children.forEach(function(item_children){}}
+                                <a href="javascript:;">{{=item_children.name}}</a>
+                                {{});}}
+                            </p>
+                        </div>
+                    </div>
+                    {{ });}}
+                </div>
+                <div class="mainnav">
+                    <ul>
+                        <li><a href="javascript:;" data-go-route="/c/app/init">首页</a></li>
+                        <li><a href="javascript:;" data-go-route="/c/blog/init">博客</a></li>
+                        <li><a href="javascript:;" data-go-route="/c/contact/init">联系</a></li>
+                       
+                    </ul>
+                </div>  
+                <div class="search">
+                    <i class="search-btn icon-font">&#xe60a;</i>
+                    <input type="text" name="" id="">
+                </div>
+                <div class="github">
+                    <i class="github-icon icon-font">&#xe600;</i>
+                    <span class="list">Github</span>
+                </div>
+            </div>
+        </div> 
+    </div>
+    <div class="pic-con">
+            <div class="side-container">
+                <div class="side-wrap">
+                    <img src="public/images/pic.webp" alt="">
+                    <ul>
+                      <li><a href="javascript:;" data-go-route-reload="/c/detail/init&articleId=17">拼现在，搏未来</a></li>
+                      <li><a href="javascript:;" data-go-route-reload="/c/detail/init&articleId=16">暑假集训火热进行中</a></li>
+                      <li><a href="javascript:;" data-go-route-reload="/c/detail/init&articleId=5">静态资源</a></li>
+                      <li><a href="javascript:;" data-go-route-reload="/c/detail/init&articleId=5">静态资源</a></li>
+                      <li><a href="javascript:;" data-go-route-reload="/c/detail/init&articleId=5">静态资源</a></li>
+
+                    <div class="more">
+                        <i class="more-btn icon-font">&#xe60b;</i>
+                        <span>查看更多</span>
+                    </div>
+                </div>
+            </div>
+    </div>
+</script>
+
+<script export="body" type="text/template">
+    <main class="page-body">
+        <style scoped>
+            .page-body {
+                min-height: 400px;
+            }
+        </style>
+        <div class="container">
+           <div id="gonggao">           
+           </div>
+            <div id="anli"> 
+              <div class="container-fluid">
+                      <div class="row">
+                          <h3><span class="line"> </span>项目案例</h3>
+                          <br>
+                          <ul class="nav nav-tabs">
+                              <li role="presentation" class="active"><a href="javascript:;" data-go-route-reload="/c/app/ganli&aid=3">门户网站</a></li>
+                              <li role="presentation" class=""><a href="javascript:;" data-go-route-reload="/c/app/ganli&aid=2">办公管理系统</a></li>
+                              <li role="presentation" class=""><a href="javascript:;" data-go-route-reload="/c/app/ganli&aid=1">电子商务</a></li>
+
+                          </ul>
+                          <br><br>
+                         <div class="anli"></div>
+                           </div>
+                </div>
+            </div>
+                <div id="shenghuo">
+                    <div class="container">
+                        <div class="row">
+                            <h3><span class="line"> </span>宏奕生活</h3>
+                            <br>
+                            <ul class="nav nav-tabs">
+                                {{ it.shc.forEach(function(item){ }}
+                                <li role="presentation" class=""><a href="javascript:;" class="item{{=item.id}}" data-go-route-reload="/c/app/gshchild&sid={{=item.id}}&id=0">{{=item.name}}</a></li>
+                                {{ }); }}
+                            </ul>
+                            <br><br>
+                            <div class="shenghuo"></div>
+                        </div>
+                    </div>
+                </div>
+
+            <div id="member">
+              
+            </div>
+        </div>
+    </main>
+</script>
+
+ <script export="footer" type="text/template">
+    <footer class="page-foot">
+        <style scoped>
+            footer {
+                margin-top: 20px;
+                
+            }
+            .foot-line {
+                height: 1px;
+                border-top: 1px solid #e5e5e5;
+                margin-bottom: 20px;
+            }
+            .copyright {
+                text-align: center;
+            }
+
+          
+
+        </style>
+        <div id ="a" style="">
+             <div class="con">
+                 <div class="left">
+                     <div class="intro">
+                         <img src="/public/images/logo3.png">
+                         <p class="detail">
+                             宏奕的作品特别注重项目的技术性，无论是开发的技术沉淀还是后期维护都没有问题！会以极强的稳定性、优秀的用户体验、较好的安全性及负责的跟踪维护让您没有后顾之忧！
+                         </p>
+                     </div>
+                     <div class="follow">
+                     关注我们 &nbsp;:&nbsp;&nbsp;
+                        <div class="box bg-2">
+
+                 
+                  <button class="button button--sacnite button--round-l"
+                    style="line-height: 18px;
+                    padding-top: 1px;
+                    margin-left:132px;" id="b1" >
+                  
+                     <a href="#" data-go-route="">
+                     <i class="icon iconfont" style="font-size:30px;margin-top:10px;">&#xe602;</i></a>
+                    
+
+
+                    </button>
+
+                     
+                   
+               
+
+                  
+                     <button class="button button--sacnite button--round-l"
+                    style="line-height: 18px;
+                                            padding-top: 1px; margin-left:51px;"  id="b2">
+                  
+                     <a href="#" data-go-route=""><i class="icon iconfont" style="font-size:23px;margin-top:10px;">&#xe605;</i></a>
+                   
+                    <span>User</span>
+                    </button>
+               
+
+                   
+                     <button class="button button--sacnite button--round-l"
+                     id="p3" 
+                    style="line-height: 18px;
+                    padding-top: 0px;margin-left:58px;" id="b3">
+                  
+                     <a href="#" data-go-route=""><i class="icon iconfont" style="font-size:27px;margin-top:10px;">&#xe604;</i></a>
+                   
+                    <span>User</span>
+                    </button>
+                   
+
+                                 
+                    </div>
+                </div>
+
+                  <div class="popup" id="popup" style="z-index:120;display:'none';">
+                     <span><em></em></span>
+                         sadsadsads
+                     </div>
+                      <div class="popup" id="popup1" style="z-index:120;display:'none';">
+                     <span><em></em></span>
+                         sadsadsads
+                     </div>
+                      <div class="popup" id="popup2" style="z-index:120;display:'none';">
+                     <span><em></em></span>
+                         sadsadsads
+                     </div>
+            </div>
+                <div class="right">
+                    <div class="contact">
+                        <a href="javascript:;" data-go-route="/c/blog/init">关于我们</a>
+                        <a href="javascript:;" data-go-route="/c/contact/init">联系我们</a>
+                        <a href="javascript:;" data-go-route="/c/contact/init">加入我们</a>
+                        <a href="javascript:;" data-go-route="/c/blog/init">博客中心</a>
+                        <a href="javascript:;" data-go-route="/c/contact/init">意见反馈</a>
+                        <a href="javascript:;" data-go-route="/c/contact/init">帮助中心</a>
+
+                </div>
+                </div>
+             </div>
+        </div>    
+</div>
+   
+    </footer>
+</script>

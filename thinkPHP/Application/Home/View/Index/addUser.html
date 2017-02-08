@@ -1,0 +1,27 @@
+<extend name="public:frameset"/>
+<block name="body">
+    <div id="background">
+        <h1>请注册！</h1>
+		<form method="post" action="{:U('Index/doUser')}">
+		 	<div id="content">
+		     	<div class="card1">
+		        	<p>账号：<input type="number" name="user_id" required="required"></p>
+		        	<p>密码：<input type="text" name="psw"></p>
+		        	<p>昵称：<input type="text" name="name" required="required"></p>
+		        	<p>性别：<select name="sex">
+							<option value="男">男</option>
+							<option value="女">女</option>
+						</select>
+					</p>
+		        	<p>邮箱：<input type="email" name="email" required="required"></p>
+		    	</div>
+		 	</div>
+		 	<div id="result">
+		        <span>已有账号<a style="text-decoration:none;" href="{:U('Index/userLogin')}">返回登入</a></span>
+		    </div>
+		 	<div id="footer">
+		     	<input type="submit" value="注册" id="sub" name="sub">
+		 	</div>
+		</form>
+    </div>
+</block>

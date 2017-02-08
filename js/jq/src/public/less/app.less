@@ -1,0 +1,476 @@
+/**
+ * global
+ */ 
+@font-face {
+	font-family: "iconfont";
+	src: url('vendor/icon/iconfont.eot?t=1468646688'); /* IE9*/
+	src: url('vendor/icon/iconfont.eot?t=1468646688#iefix') format('embedded-opentype'), /* IE6-IE8 */
+	url('vendor/icon/iconfont.woff?t=1468646688') format('woff'), /* chrome, firefox */
+	url('vendor/icon/iconfont.ttf?t=1468646688') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+	url('vendor/icon/iconfont.svg?t=1468646688#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+
+
+.icon-font{
+	font-family: iconfont!important;
+}
+.p-r{
+	position: relative;
+}
+.p-a{ 
+	position: absolute;
+}
+a{ 
+	color: #333;
+	text-decoration: none;
+}
+a:hover, a:focus {
+    color: #333;
+    text-decoration: none;
+}
+i{
+	font-style: normal;
+}
+ul li{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+@navcatebtn-width: 270px;
+@mainnav-pf: 290px;
+@mainnav-width: 380px;
+@search-input-w: 200px;
+@nav-padding: 35px;
+@nav-height: 50px;
+@nav-inp-fs: 18px;//nav-input-font-size
+@nav-fs: 22px;
+@catedialog-h: 500px;
+@catedialog-p-t: 21px; 
+@side-container-h: 400px;
+body{
+	font-family: "微软雅黑";
+}
+.index-top{
+	// background: url(public/images/apple.webp) no-repeat;
+	// background-size: 100% 550px;
+	width: 100%;
+	height: 150px;
+}
+.nav-wrap{
+	width: 1170px;
+	height: 100%;
+	margin: auto;
+	>img{
+		position: relative;
+		top: 27px;
+	}
+}
+.logo{
+	width: 200px;
+	height: 100px;
+	margin-left:-10px;
+	img{
+		position: relative;
+		top: 24px;
+		width: 100%;
+		left: 10px;
+	}
+}
+.top-nav{
+	z-index: 1;
+    height: @nav-height;
+    width: 100%;
+    font-family: "YouYuan";
+    box-sizing: border-box;
+    border: 1px solid rgba(179, 163, 163, 0.37);
+    .navcatebtn{
+        width: @navcatebtn-width;
+        height: @nav-height;
+        background-color: rgba(13, 13, 12, 0.83);
+        overflow: hidden;
+        .list-btn{
+        	cursor: pointer;
+            font-size: 26px;
+            font-style: normal;
+            color: white;
+            line-height: @nav-height;
+            margin-left: 20px;
+        }
+        .list{
+    		font-size: @nav-fs;
+    	    position: relative;
+    	    /* font-weight: bold; */
+    	    line-height: @nav-height;
+    	    top: -1px;
+    	    left: 20px;
+    	    color: #fff;
+        }
+    }
+	.catedialog{
+		top: @nav-height;
+		width: 270px;
+		height: @catedialog-h;
+		background: rgba(22, 20, 20, 0.41);
+		box-sizing: border-box;
+		padding-top: @catedialog-p-t;
+        a:hover {
+          text-decoration:underline;
+        }
+		.curbg{
+			width: 650px;
+			height: 500px;
+			background-color: #fff;
+			position: absolute;
+			top: -1px;
+			left: 270px;
+			box-sizing: border-box;
+			border: 1px solid rgba(53, 53, 52, 0.44);
+			border-left: none;
+			display: none;
+          .remove-logo {
+            float: right;
+            margin: 10px 10px 0 0;
+          }
+          .curbg-titile {
+            margin: 40px 0 0 40px;
+            font-family: "微软雅黑";
+            font-size: 18px;
+          }
+          .curbg-img {
+            position: absolute;
+            margin: 184px 0 0 449px;
+          }
+          .curbg-list {
+            margin: 20px 0 0 40px;
+            font-family: "微软雅黑";
+            font-size: 15px;
+            line-height: 30px;
+          }
+		}
+		.item{
+			width: 100%;
+			height: @catedialog-h/5-@catedialog-p-t/5;
+			padding: 5px 15px 0 15px;
+			.inn{	
+			    width: 100%;
+			    height: 100%;
+			    border-bottom: 1px solid #fff;
+			    padding-top: 8px;
+			    >a{
+			    	color:#fff;
+			    	font-size: 18px;
+			    	display: block;
+			    	margin-bottom: 10px;	
+			    }
+			    p{
+					font-family: "微软雅黑";
+					a{
+						font-size: 14px;
+						color: #fff;
+						display: inline-block;
+						margin-right: 10px;
+					}
+			    }
+			}
+		}
+		.item:last-child{
+			.inn{
+				border: none;
+			}
+		}
+
+	}
+	.mainnav{
+		float: left;
+		height: 50px;
+		width: @mainnav-width;
+		position: relative;
+		top: 1px;
+		margin-left: 290px;
+		ul li{
+			float: left;
+			line-height: @nav-height;
+			font-size: @nav-fs;
+			margin-right: 35px;
+		}
+		a{
+			color: #333;
+		}
+	}
+	.search{
+		position: absolute;		
+		right: 170px;
+		height: @nav-height;
+		.search-btn{
+			font-style: normal;	
+			position: absolute;
+			left: 10px;
+			top: 15px;
+			color: #524B4B;
+		}
+		input{
+			margin: 13px 0;
+			height: 32px;
+		    width: 200px;
+		    background-color: rgba(183, 204, 222, 0);
+		    border: 1px solid rgba(179, 163, 163, 0.37);
+		    border-radius: 4px;
+		    outline: none;
+		    padding-left: 30px;
+		    font-size: @nav-inp-fs;
+		    color: #524B4B;
+		    position: relative; 
+		    top: -5px;
+
+		}
+	}
+	.github{
+		position: absolute;
+		right: 30px;
+		height: @nav-height;
+		// font-size: @nav-fs;
+		line-height: @nav-height;
+		// color: #fff;
+		.github-icon{
+			.icon-font;
+			font-style: normal;
+			font-size: 28px;
+			cursor: pointer;
+		}
+		span{
+			cursor: pointer;
+			font-family: "微软雅黑";
+		}
+	} 
+}
+.pic-con{
+	width: 100%;
+	height: 500px;
+	margin:auto;
+	background: url(public/images/1.jpg) no-repeat;
+	background-size: 100% 550px;
+}
+.side-container{
+	width: 1170px;
+	margin: auto;
+    min-height: @side-container-h;
+    position: relative;
+    font-family: "微软雅黑";
+    .side-wrap{
+    	position: absolute;
+    	width: 228px;
+    	height: 358px;
+    	background: rgba(22,20,20,.41);
+    	right: 0;
+    	top: 75px;
+    	// font-family: "YouYuan";
+    	img{
+    		width: 100%;
+    	}
+    	ul{
+    		margin: 10px 15px;
+    		padding: 0;
+    		border-bottom: 1px solid #ccc;
+    		li{   			
+    			font-size: 15px;
+    			margin-bottom: 10px;
+    		}	
+    	}
+    	.more{
+    		position: absolute;
+    		right: 14px;
+    		bottom: 10px;
+    		.more-btn{
+				font-size: 16px;
+    		}
+    		span{
+    			font-size: 15px;
+    			color: #fff;
+    		}
+    	}
+    	a,i{
+    		color: #fff
+    	}
+    }
+}
+#container{ 
+	width: 1170px;
+	margin: auto;
+}
+#anli{
+	margin-top: 2px;
+}
+
+
+
+/**/
+
+
+/**/
+
+
+
+
+/**/
+
+// #a {
+//     margin-top: 10px;
+// 	width:100%;
+// 	// background: url('../public/images/bg.jpg') no-repeat;
+// 	background-color: #303030;
+// 	height: 400px;
+// 	background-size: 100% 100%;
+// 	position: absolute;
+// 	/*z-index: 1;*/
+// 	margin-top: 90px;
+// 	color: #f3e8e8;
+// 	.con{
+// 		width: 1170px;
+// 		margin: auto;
+// 		overflow: hidden;
+// 		.left{
+// 			width: 500px;
+// 			float: left;
+// 			.intro{
+// 				margin-top: 50px;
+// 				.detail{
+// 					 font-family: "微软雅黑";
+//     				 line-height: 35px;
+// 				}
+// 			}
+// 			.follow{
+// 				margin-top: 30px;
+// 			}
+// 		}
+
+// 		.right{
+// 			float: right;
+// 			width: 500px;
+// 			height: 100%;
+// 			.contact{
+// 				margin-top: 134px;
+// 				a{
+// 					color: #f3e8e8;
+// 					padding-right: 20px;	
+// 				}
+// 				a:hover{
+// 					color: red;
+// 					transition: color 1s;
+// 				}
+// 			}
+// 		}
+// 	}
+// }
+
+
+// .bg-2 {
+//       background: #7986cb;
+//       color: #ECEFF1;
+//       margin-top: 1px;
+//       a {
+//         color: #fff;
+//         text-decoration: none;
+//       }
+
+//         /* Common button styles */
+//     .button {
+//       float: left;
+//       min-width: 150px;
+//       max-width: 250px;
+
+//       display: block;
+      
+//       padding: 1em 2em;
+//       border: none;
+//       background: none;
+//       color: inherit;
+//       vertical-align: middle;
+//       position: relative;
+//       z-index: 1;
+//       -webkit-backface-visibility: hidden;
+//       -moz-osx-font-smoothing: grayscale;
+//     }
+//     .button:focus {
+//       outline: none;
+//     }
+//     .button > span {
+//       vertical-align: middle;
+//     }
+
+//     .bg-2 .button {
+//       color: #ECEFF1;
+//       border-color: #ECEFF1;
+//     }
+
+//     /* Sizes */
+
+//     /* Typography and Roundedness */
+
+//     .button--round-l {
+//       border-radius: 40px;
+//       margin-left: 80px;
+//       margin-top: -30px;
+//     }
+
+
+//     /* Sacnite */
+//     .button.button--sacnite {
+//       width: 40px;
+//       height: 40px;
+//       min-width: 0;
+//       padding: 0;
+//       color: #fff;//下面字的颜色
+//       -webkit-transition: color 0.3s;
+//       transition: color 0.3s;
+//     }
+//     .button--scanite.button--round-l {
+//       border-radius: 50%;
+//     }
+//     .button--sacnite.button--inverted {
+//       color: #37474f;//
+//     }
+//     .button--sacnite::before {
+//       content: '';
+//       position: absolute;
+//       top: 0;
+//       left: 0;
+//       width: 100%;
+//       height: 100%;
+//       border-radius: inherit;
+//       z-index: -1;
+//       box-shadow: inset 0 0 0 35px rgba(0, 0, 0, 0.4);//阴影的颜色 #37474f
+//       -webkit-transform: scale3d(0.9, 0.9, 1);
+//       transform: scale3d(0.9, 0.9, 1);
+//       -webkit-transition: box-shadow 0.3s, -webkit-transform 0.3;
+//       transition: box-shadow 0.3s, transform 0.3s;
+//     }
+//     .button--sacnite.button--inverted::before {
+//       box-shadow: inset 0 0 0 35px #fff;
+//     }
+//     .button--sacnite .button__icon {
+//       font-size: 22px;
+//       width: 22px;
+//     }
+//     .button--sacnite > span {
+//       position: absolute;
+//       opacity: 0;
+//       pointer-events: none;
+//     }
+//     .button--sacnite:hover {
+//       color: #37474f;//字改变后的颜色
+//     }
+//     .button--sacnite.button--inverted:hover {
+//       color: #fff;
+//     }
+//     .button--sacnite:hover::before {
+//       box-shadow: inset 0 0 0 2px #37474f;//边框加阴影？改变的颜色
+//       -webkit-transform: scale3d(1, 1, 1);
+//       transform: scale3d(1, 1, 1);
+//     }
+//     .button--sacnite.button--inverted:hover::before {
+//       box-shadow: inset 0 0 0 2px #fff;
+//     }
+
+//     }
+

@@ -1,0 +1,19 @@
+{
+  "name": "picturecrawder",
+  "version": "0.0.0",
+  "description": "bypromise",
+  "main": "picture_crawder",
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "cheerio": "~0.20.0",
+    "mkdirp": "~0.5.1",
+    "request": "~2.73.0"
+  },
+  "keywords": [
+    "promise"
+  ],
+  "author": "DOCer",
+  "license": "ISC"
+}

@@ -1,0 +1,17 @@
+<extend name="public:frameset"/>
+<block name="body">
+    <div id="background">
+        <h1>猜数字</h1>
+        <form method="post" action="{:U('Index/game')}">
+        <div id="content">
+            <input style="margin: 50px 100px;width:100px;-webkit-border-radius:20px;-moz-border-radius:20px;border-radius:20px;" type="number" name="input" value="{$input}" min="1" max="10">
+        </div>
+        <div id="result">
+            <span>{$info}</span>
+        </div>
+        <div id="footer">
+            <input type="submit" value="开始游戏" id="sub" name="sub">
+        </div>
+        </form>
+    </div>
+</block>

@@ -1,0 +1,49 @@
+.navBox {
+  min-width: 180px;
+  font-family: 微软雅黑;
+}
+.title {
+  line-height: 15px;
+}
+.detial {
+  font-weight: normal;
+  line-height: 8px;
+  text-indent: 1em;
+}
+.backgroundColor {
+  background-color: rgba(255, 255, 255, 0.6) !important;
+}
+.navSide .active {
+  border-left: 2px solid #563d7c;
+  padding-left: 13px;
+  color: #563d7c;
+}
+.navSide .active:focus {
+  background-color: rgba(255, 255, 255, 0.6) !important;
+}
+.navSide li {
+  line-height: 20px;
+}
+.navSide li a {
+  display: inline-block;
+  color: #563d7c;
+  line-height: 15px;
+}
+.navSide li a:hover {
+  border-left: 1px solid #563d7c;
+  padding-left: 14px;
+  background-color: rgba(255, 255, 255, 0.6) !important;
+}
+.navSide li a:focus {
+  background-color: rgba(255, 255, 255, 0.6) !important;
+}
+.navSide ul li a {
+  font-weight: normal;
+  line-height: 8px;
+  text-indent: 1em;
+}
+.navSide ul li small {
+  display: block;
+  float: right;
+  margin-top: 5px;
+}

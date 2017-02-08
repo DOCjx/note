@@ -1,0 +1,19 @@
+{
+  "errCode": 200,
+  "errMsg": "",
+  "data":[{
+      "id": 1,
+      "name": "科技创新",
+      "priority": 2
+    },
+    {
+      "id": 2,
+      "name": "技术分享",
+      "priority": 1
+    },
+    {
+      "id": 3,
+      "name": "生活什锦",
+      "priority": 1
+    }]
+}
