@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link href="__PUBLIC__/assets/bootstrap-3.3.5/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/assets/globle/css/main.css" rel="stylesheet" type="text/css"/>
+	<script type="text/javascript" src="__PUBLIC__/assets/jQuery/jquery-3.0.0.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/assets/bootstrap-3.3.5/js/bootstrap.js"></script>
+</head>
+<body>
+	<div class="container">
+		<form action="{:U('Index/send')}" method="post" accept-charset="utf-8" class="row">
+			<table class="table table-striped table-hover col-md-4">
+				<tr class="first">
+					<td></td>
+					<td>学号</td>
+					<td>姓名</td>
+					<td>性别</td>
+					<td>班级</td>
+					<td>手机号</td>
+					<td>QQ号</td>
+					<td>发送状态</td>
+					<td>状态</td>
+				</tr>
+				<volist name="users" id="dataDetial">
+					<tr>
+						<td>
+							<input type="checkbox" name="userId[]" class="checkboxs" value="{$dataDetial['id']}">
+						</td>
+						<td>{$dataDetial['sno']}</td>
+						<td>{$dataDetial['name']}</td>
+						<td>{$dataDetial['sex']}</td>
+						<td>{$dataDetial['class']}</td>
+						<td>{$dataDetial['phone']}</td>
+						<td>{$dataDetial['QQ']}</td>
+						<td>{$dataDetial['mail']}</td>
+						<td>{$dataDetial['status']}</td>
+					</tr>
+				</volist>
+			</table>
+			<button type="button" class="btn btn-default all">全选</button>
+			<button type="button" class="btn btn-default unall">全不选</button>
+			<button type="button" class="btn btn-default others">反选</button>
+			<input type="submit" name="sub" class="btn btn-default" value="发送">
+		</form>
+	</div>
+	<script type="text/javascript">
+		$(function (){
+			var checkboxs = $("input[type='checkbox']");
+			$(".all").click(()=> {
+                checkboxs.prop("checked",true); 
+            });
+            $(".unall").click(()=> {
+                checkboxs.prop("checked",false); 
+            });
+            $('.others').click(()=>{
+		        checkboxs.prop("checked", function(index, attr){
+		            return !attr;
+		        });
+		    });
+		    $("tr").each(function(){    
+	            $(this).children().click(function(e){
+	                $(e.target).parent("tr").each(function(){ 
+		                $(this).find(":checkbox").prop("checked", function(index, attr){
+				            return !attr;
+				        });
+	                });  
+	            });    
+	        }); 
+		});
+	</script>
+</body>
+</html>
