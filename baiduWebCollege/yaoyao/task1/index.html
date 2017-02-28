@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>tesk1</title>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<style type="text/css" media="screen">
+		.form-inline{
+			width: 500px;
+			margin:20px auto;
+		}
+		button{
+			margin-left: 20px;
+		}
+		input{
+			margin-left: 40px;
+		}
+		#helpBlock{
+			margin-left: 70px;
+		}
+	</style>
+	<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head>
+<body>
+	<form class="form-inline" action="#" method="get" accept-charset="gb2312">
+		<div class="form-group">
+			名称
+			<input class="name form-control" type="text">
+			<button class="btn btn-primary" onclick="return false;" type="">验证</button>
+			<span id="helpBlock" class="help-block">必填，长度4~16个字符！</span>
+		</div>
+	</form>
+	<script type="text/javascript">
+		$(()=>{
+			$('.btn').click((e)=>{
+				var reg =  /([^\x00-\xff])+/;//正则匹配双字节字符
+				var name = $.trim($('.name').val());//获取input框的值并去除字符串前后的空格
+				var counter = 0;
+				var temp='';
+				
+				if( !name.length ){
+					action("姓名不能为空！","form-group has-error");
+					return;
+				}
+				for( var i=0;i<name.length;i++ ){
+					temp = name[i];
+					reg.test(temp)?counter+=2:counter++;
+				}
+				if( counter>=4&&counter<=16 ){
+					action("名称格式正确！","form-group has-success");
+				}else{
+					action("必填，长度4~16个字符！","form-group has-error");
+				}
+				
+			});
+			var action = function(text,class){
+				$('#helpBlock').html(text);
+				$('.form-group').removeClass().addClass(class);
+			}
+		});
+	</script>
+</body>
+</html>
