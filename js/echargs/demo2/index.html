@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>实时空气质量</title>
+	<script src="../echarts.js"></script>
+	<script src="../china.js"></script>
+	<script src="../../Jquery3.0/jquery-3.0.0.js"></script>
+</head>
+	<style type="text/css" media="screen">
+		body{
+			display:flex;
+			height:790px;
+		}
+		#main{
+			flex:auto;
+			width:80%;
+		}
+	</style>
+<body>
+	<body>
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main"></div>
+    <script type="text/javascript">
+        var myChart = echarts.init(document.getElementById('main'));
+        myChart.showLoading();
+		// 异步加载数据
+		$.get('data/place.json',function (place) {
+			$.get('data/updataAll.json',function (updata,s) {//http://www.pm25.in/api/querys/all_cities.json?token=5j1znBVAsnSf5xQyNQyq
+				console.log(s);
+				$.get('data/aqi.json',function (aqi) {//http://www.pm25.in/api/querys/aqi_ranking.json?token=5j1znBVAsnSf5xQyNQyq
+					myChart.hideLoading();
+				    // 填入数据
+				    // console.log(mydata);
+				    var formatMap = function(places){
+				    	var res = {};
+				    	for(var i=0;i<places.length;i++){
+				    		//将城市和检测点经纬度格式化，区第一个监测点经纬度代表城市经纬度表示AQI
+				    		res[places[i].name] = places[i].position;
+				    		if( !res[places[i].city] ) res[places[i].city] = places[i].position;
+				    	}
+				    	return res;
+				    }
+				    var formatValue = function(values){
+				    	var res = [];
+				    	for(var i=0;i<values.length;i++){
+				    		res.push({
+				                name: values[i].position_name,
+				                value: values[i].pm2_5_24h
+				            });
+				    	}
+				    	return res;
+				    };
+				    var formatAqi = function(values){
+				    	var res = [];
+				    	for(var i=0;i<values.length;i++){
+				    		res.push({
+				                name: values[i].area,
+				                value: values[i].aqi
+				            });
+				    	}
+				    	return res;
+				    };
+				    var geoCoordMap = formatMap(place);
+				    var data = formatValue(updata);
+				    var aqiData = formatAqi(aqi);
+				    // console.log(data);
+				    // console.log(geoCoordMap);
+				    
+				    
+				    var convertData = function (data) {
+					    var res = [];
+					    for (var i = 0; i < data.length; i++) {
+					        var geoCoord = geoCoordMap[data[i].name];
+					        
+					        if (geoCoord) {
+					            res.push({
+					                name: data[i].name,
+					                value: geoCoord.concat(data[i].value)
+					            });
+					        }
+					    }
+					    return res;
+					};
+				    option = {
+					    backgroundColor: '#404a59',
+					    title: {
+					        text: '全国主要城市空气质量',
+					        subtext: 'data from PM25.in updata at '+updata[0].time_point,
+					        sublink: 'http://www.pm25.in',
+					        left: 'center',
+					        textStyle: {
+					            color: '#fff'
+					        }
+					    },
+					    tooltip : {
+					        trigger: 'item'
+					    },
+					    legend: {
+					        orient: 'vertical',
+					        y: 'bottom',
+					        x:'right',
+					        data:['pm2.5','pm2.5 Top 5','AQI'],
+					        textStyle: {
+					            color: '#fff'
+					        }
+					    },
+					    geo: {
+					        map: 'china',
+					        label: {
+					            emphasis: {
+					                show: true
+					            }
+					        },
+					        roam: true,
+					        itemStyle: {
+					            normal: {
+					                areaColor: '#323c48',
+					                borderColor: '#111'
+					            },
+					            emphasis: {
+					                areaColor: '#2a333d'
+					            }
+					        }
+					    },
+					    series : [
+					        {
+					            name: 'pm2.5',
+					            type: 'scatter',
+					            coordinateSystem: 'geo',
+					            data: convertData(data),
+					            symbolSize: function (val) {
+					                return val[2] / 10;
+					            },
+					            label: {
+					                normal: {
+					                    formatter: '{b}',
+					                    position: 'right',
+					                    show: false
+					                },
+					                emphasis: {
+					                    show: true
+					                }
+					            },
+					            itemStyle: {
+					                normal: {
+					                    color: '#ddb926'
+					                }
+					            }
+					        },
+					        {
+					            name: 'pm2.5 Top 5',
+					            type: 'effectScatter',
+					            coordinateSystem: 'geo',
+					            data: convertData(data.sort(function (a, b) {
+					                return b.value - a.value;
+					            }).slice(0, 5)),
+					            symbolSize: function (val) {
+					                return val[2] / 10;
+					            },
+					            showEffectOn: 'render',
+					            rippleEffect: {
+					                brushType: 'stroke'
+					            },
+					            hoverAnimation: true,
+					            label: {
+					                normal: {
+					                    formatter: '{b}',
+					                    position: 'right',
+					                    show: true
+					                }
+					            },
+					            itemStyle: {
+					                normal: {
+					                    color: '#f4e925',
+					                    shadowBlur: 10,
+					                    shadowColor: '#333'
+					                }
+					            },
+					            zlevel: 1
+					        },
+					        {
+					            name: 'AQI',
+					            type: 'scatter',
+					            coordinateSystem: 'geo',
+					            data: convertData(aqiData),
+					            symbolSize: function (val) {
+					                return val[2] / 10;
+					            },
+					            label: {
+					                normal: {
+					                    formatter: '{b}',
+					                    position: 'right',
+					                    show: false
+					                },
+					                emphasis: {
+					                    show: true
+					                }
+					            },
+					            itemStyle: {
+					                normal: {
+					                    color: '#ddb926'
+					                }
+					            }
+					        },
+					        {
+					            name: 'AQI Top 5',
+					            type: 'effectScatter',
+					            coordinateSystem: 'geo',
+					            data: convertData(aqiData.sort(function (a, b) {
+					                return b.value - a.value;
+					            }).slice(0, 5)),
+					            symbolSize: function (val) {
+					                return val[2] / 10;
+					            },
+					            showEffectOn: 'render',
+					            rippleEffect: {
+					                brushType: 'stroke'
+					            },
+					            hoverAnimation: true,
+					            label: {
+					                normal: {
+					                    formatter: '{b}',
+					                    position: 'right',
+					                    show: true
+					                }
+					            },
+					            itemStyle: {
+					                normal: {
+					                    color: '#f4e925',
+					                    shadowBlur: 10,
+					                    shadowColor: '#333'
+					                }
+					            },
+					            zlevel: 1
+					        }
+					    ]
+					};
+				    myChart.setOption(option);
+				});
+			});
+		});
+    </script>
+</body>
+</body>
+</html>
