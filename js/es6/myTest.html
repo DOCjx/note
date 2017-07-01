@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>试一下es6</title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	<script>
+		'use strict'
+
+		let sum = 12;
+		((w)=>{
+			const arr = [7, 6, 4 ,1];
+			let add = (a, b, c, d) => {
+				return (cb)=>{
+					return cb(a, b, c, d);
+				}
+			}
+			console.log("sum1="+sum);
+			//修改sum的修饰sum的值
+			//缺省:12
+			//let:报错
+			//var:undefined
+			sum = add(...arr)((...x)=>{
+				return x.reduce((m,n)=>m+n);
+			});
+			add(1, 2, 3, 4)((...x)=>{
+				let [h, i, j, k] = x;
+				console.log(h);
+				console.log(i);
+				console.log(j);
+				console.log(k);
+			});
+			console.log("sum2="+sum);
+		})(window);
+		console.log("sum3="+sum);
+	</script>
+</body>
+</html>
