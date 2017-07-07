@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>函数式编程及优化</title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	<script>
+		//普通式
+		// const arr = ["book", "flower", "computer", "future"];
+		// for(const i in arr){
+		// 	const c = arr[i][0];
+		// 	arr[i] = c.toUpperCase() + arr[i].slice(1);
+		// }
+		// console.log(arr);
+
+		// //函数式
+		// function fistToLower(s){
+		// 	return s[0].toLowerCase() + s.slice(1);
+		// }
+		// function arrFistToLower(arr){
+		// 	return arr.map(fistToLower);
+		// }
+		// console.log(arrFistToLower(arr));
+
+		// //不复用函数式
+		// console.log(arr.map(word => word[0].toUpperCase() + word.slice(1)));
+// 1+6-9
+// add();
+// sub();
+// sub(add(1, 6),9);
+
+		//链式优化
+		// const caculate = {
+		// 	fistNum(x) {
+		// 		this.tmp = x;
+		// 		return this;
+		// 	},
+		// 	add(x) {
+		// 		this.tmp = this.tmp ? this.tmp : 0;
+		// 		this.tmp += x;
+		// 		return this;
+		// 	},
+		// 	sub(x) {
+		// 		this.tmp = this.tmp ? this.tmp : 0;
+		// 		this.tmp -=x;
+		// 		return this;
+		// 	},
+		// 	valueOf(cb = x => console.log(x)) {
+		// 		this.tmp || console.log("调用错误！");
+		// 		this.tmp = this.tmp && cb(this.tmp);
+		// 		return this;
+		// 	}
+		// }
+		// caculate
+		// 	.fistNum(1)
+		// 	.add(6)
+		// 	.sub(9)
+		// 	.valueOf(item=>item*2)
+		// 	.valueOf(item=>item/2)
+		// 	.valueOf();
+		// caculate.sub(9).valueOf();
+		
+		//另一种链式操作
+		const add = (x) => {
+			let sum = x;
+
+			let tmp = (y) => {
+				sum += y;
+				return tmp;
+			}
+
+			tmp.toString = () =>{
+				return sum;
+			}
+
+			return tmp;
+		}
+		console.log(add(2)(3)(4));
+
+		//柯里化
+		// function Currying(fn, ...args){
+		// 	let [arg1, arg2] = args;
+		// 	let flag = arg1 ? false : true;//标记第一个参数是否为空
+		// 	return x =>  {
+		// 		if( flag ) arg1 = x;
+		// 		else arg2 = x;
+		// 		return fn(arg1, arg2);
+		// 	}
+		// }
+		// const BASE = 'www/homyit/blog';
+		// const getPath = (a, b) => a + b;
+		// const curGetPath = Currying(getPath, BASE, null);
+		// console.log( curGetPath('/img/me.png') );
+		// console.log( curGetPath('/css/main.css') );
+
+	</script>
+</body>
+</html>

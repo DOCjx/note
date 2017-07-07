@@ -7,16 +7,19 @@
 <body>
 	<form action="formCheck.php" method="post">
 		<input type="text" name="code" id="code">
-		<img id="checkpic" width="120" height="40" onclick="changing();" src='getCode.php' />
+		<img id="checkpic" width="120" height="40" src='getCode.php' />
 		<input type="submit">
 	</form>
 	<?php 
-		echo @$_POST['code'];
+		session_start();
+		echo $_SESSION['co'];
 	?>
 	<script>
-		function changing(){
-		    document.getElementById('checkpic').src="getCode.php?+Math.random()";
-		} 
+		((w)=>{
+			document.getElementById('checkpic').onclick= () => {
+				document.getElementById('checkpic').src="getCode.php?+Math.random()";
+			}
+		})(window);
 	</script>
 </body>
 </html>

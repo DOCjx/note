@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>cavans测试</title>
+    <link rel="stylesheet" href="">
+    <style type="text/css">
+        canvas {
+            border: dashed 2px #CCC
+        }
+    </style>
+</head>
+<body>
+    <canvas id="can" width="400px" height="300px">4</canvas>
+    <canvas id="can1" width="400px" height="300px">4</canvas>
+    <canvas id="can2" width=200 height=200 style="border: 1px solid #ccc;"></canvas>
+    <script type="text/javascript">
+        ((w)=>{
+            let myCanvas = {
+                $$(id){
+                    return document.getElementById(id);
+                },
+                pageLoad(){
+                    this.draw1('can');
+                    this.draw20('can1') ;
+                    this.draw('can2');
+                },
+                draw1(id) {
+                    let canvas = document.getElementById(id);
+                    if (canvas == null)
+                        return false;
+                    let context = canvas.getContext("2d");
+                    context.fillStyle = "#EEEEFF";
+                    context.fillRect(0, 0, 400, 300);
+                    const n = 0;
+                    const dx = 150;
+                    const dy = 150;
+                    const s = 100;
+                    context.beginPath();
+                    context.fillStyle = 'rgb(100,255,100)';
+                    context.strokeStyle = 'rgb(0,0,100)';
+                    const x = Math.sin(0);
+                    const y = Math.cos(0);
+                    const dig = Math.PI / 15 * 11;
+                    for (let i = 0; i < 30; i++) {
+                        const x = Math.sin(i * dig);
+                        const y = Math.cos(i * dig);
+                        context.lineTo(dx + x * s, dy + y * s);
+                    }
+                    context.closePath();
+                    context.fill();
+                    context.stroke();
+                },
+                draw20(id) {
+                    const canvas = this.$$(id);
+                    if (canvas == null)
+                        return false;
+                    const context = canvas.getContext("2d");
+                    const that = this;
+                    const interal = setInterval(() => {
+                        that.move(context);
+                    }, 10);
+                },
+                x:100,//起始位置
+                y:100,
+                mx:0,//移动方向
+                my:0,//移动方向
+                ml:1,//移动速度
+                w:20,//方块大小
+                h:20,
+                cw:400,//容器大小
+                ch:300,
+                move(context) {
+                    context.clearRect(0, 0, 400, 300);
+                    context.fillStyle = "#666";
+                    context.fillRect(0, 0, 400, 300);
+                    context.fillStyle = "red";
+                    context.fillRect(this.x, this.y, this.w, this.h);       
+                    if (this.mx == 0) {
+                        this.x = this.x + this.ml;
+                        if (this.x >= this.cw-this.w) {
+                            this.mx = 1;
+                        }
+                    }
+                    else {
+                        this.x = this.x - this.ml;
+                        if (this.x <= 0) {
+                            this.mx = 0;
+                        }
+                    }
+                    if (this.my == 0) {
+                        this.y = this.y + this.ml;
+                        if (this.y >= this.ch-this.h) {
+                            this.my = 1;
+                        }
+                    }
+                    else {
+                        this.y = this.y - this.ml;
+                        if (this.y <= 0) {
+                            this.my = 0;
+                        }
+                    }
+                  
+                }, 
+                draw(id) {
+                    let canvas=this.$$(id);
+                    let context=canvas.getContext('2d');
+                    //绘制起始点、控制点、终点  
+                    context.beginPath();  
+                    context.moveTo(20,170);  
+                    context.lineTo(130,40);  
+                    context.lineTo(180,150);    
+                    context.stroke();            
+
+                    //绘制2次贝塞尔曲线  
+                    context.beginPath();  
+                    context.moveTo(20,170);  
+                    context.quadraticCurveTo(130,40,180,150); 
+                    context.strokeStyle = "red"; 
+                    context.stroke();         
+
+                    context=canvas.getContext('2d');        
+                    //绘制起始点、控制点、终点  
+                    context.beginPath();  
+                    context.moveTo(25,175);  
+                    context.lineTo(60,80);  
+                    context.lineTo(150,30);  
+                    context.lineTo(170,150); 
+                    context.stroke();  
+
+                    //绘制3次贝塞尔曲线        
+                    context.beginPath();  
+                    context.moveTo(25,175);  
+                    context.bezierCurveTo(60,80,150,30,170,150);  
+                    context.strokeStyle = "red";  
+                    context.stroke(); 
+                }
+            }
+            myCanvas.pageLoad();
+        })(window);
+    </script>
+</body>
+</html>

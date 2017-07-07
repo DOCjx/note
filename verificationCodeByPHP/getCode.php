@@ -64,8 +64,8 @@
 		    imagesetpixel($img, mt_rand(0, $width), mt_rand(0, $height), $pixColor);
 		}
 	}
-	$str = md5(strtolower($str));
 	$_SESSION['co']=$str;
+	$str = md5(strtolower($str));
 	imagepng($img);
 	imagedestroy($img);
 ?> 

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>代码同步</title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	<script>
+		function asyncOneByOne(arr) {
+			//顺序调用，顺序输出fist，second，three
+
+			//直接顺序调用结果
+			arr[0](()=>{});
+			arr[1](()=>{});
+			arr[2](()=>{});
+
+			//回调方式实现同步
+			
+			// arr[0](()=>{
+			// 	arr[1](()=>{
+			// 		arr[2](()=>{});
+			// 	});
+			// });
+
+			//通过Promise对象实现同步
+			
+			// new Promise((res, rej)=>{
+			// 	arr[0](res);
+			// }).then(()=>{
+			// 	return new Promise((res, rej)=>{
+			// 		arr[1](res);
+			// 	});
+			// }).then(()=>{
+			// 	arr[2](()=>{});
+			// })
+ 		}
+ 		function one(callback) {     
+ 			setTimeout(function(){         
+ 				console.log('first');         
+ 				callback();
+ 			}, 3000); 
+ 		} 
+ 		function two(callback) {     
+ 			setTimeout(function(){         
+ 				console.log('second');
+ 				callback();
+ 			}, 100); 
+ 		}
+ 		function three(callback) {     
+ 			setTimeout(function(){         
+ 				console.log('three');
+ 				callback();
+ 			}, 200);
+ 		}
+ 		asyncOneByOne([one, two, three]) 
+	</script>
+</body>
+</html>

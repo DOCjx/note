@@ -13,7 +13,7 @@
     }else{
       //提示以及跳转页面
       echo "<script language=\"javascript\">";
-      echo "alert('输入错误!".md5(strtolower($_REQUEST['code'])).'()'.$_SESSION['co']."');";
+      echo "alert('输入错误!".md5(strtolower($_REQUEST['code'])).'---'.$_SESSION['co']."');";
       echo "document.location=\"action.php\"";
       echo "</script>";
     }
