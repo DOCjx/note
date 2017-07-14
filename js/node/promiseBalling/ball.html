@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Promise animation</title>
+	<style type="text/css">
+		.ball{
+			width: 40px;
+			height: 40px;
+			border-radius: 50%;
+		}
+		.ball1{
+			background-color: red;
+		}
+		.ball2{
+			background-color: blue;
+		}
+		.ball3{
+			background-color: green;
+		}
+	</style>
+</head>
+<body>
+	<div class="ball ball1" style="margin-left: 0px;"></div>
+	<div class="ball ball2" style="margin-left: 0px;"></div>
+	<div class="ball ball3" style="margin-left: 0px;"></div>
+	<button style="width:100px;height:50px;" onmouseover="something()"></button>
+	<script>
+		var ball1 = document.querySelector('.ball1');
+		var ball2 = document.querySelector('.ball2');
+		var ball3 = document.querySelector('.ball3');
+
+		
+		// function animate(ball, distance, cb){
+		// 	setTimeout(function(){
+		// 		var marginLeft = parseInt(ball.style.marginLeft, 10);
+		// 		console.log(ball.style.marginLeft);
+		// 		if( marginLeft===distance ){
+		// 			cb&&cb();
+		// 		}else{
+		// 			if( marginLeft<distance ){
+		// 				marginLeft++;
+		// 			}else{
+		// 				marginLeft--;
+		// 			}
+		// 			ball.style.marginLeft = marginLeft +'px';
+		// 			animate(ball, distance, cb);
+		// 		}
+		// 	},12);
+		// }
+		// function something(){
+		// 	animate(ball1, 500,function(){
+		// 		animate(ball2, 250,function(){
+		// 			animate(ball3, 0,function(){
+		// 				animate(ball3, 250,function(){
+		// 					animate(ball2, 250,function(){
+		// 						animate(ball1, 250,function(){
+		// 						})
+		// 					})
+		// 				})
+		// 			})
+		// 		})
+		// 	})
+		// }
+		// 
+		var Promise = window.Promise;
+
+		function promiseAnimate(ball, distance){
+			return new Promise(function(resolve, reject){
+				function _animate(){
+					setTimeout(function(){
+						var marginLeft = parseInt(ball.style.marginLeft, 10);
+
+						if( marginLeft===distance ){
+							resolve();
+						}else{
+							if( marginLeft<distance ){
+								marginLeft++;
+							}else{
+								marginLeft--;
+							}
+							ball.style.marginLeft = marginLeft+'px';
+							_animate();
+						}
+					},13);
+				}
+				_animate();
+			})
+		}
+		promiseAnimate(ball1, 100)
+			.then(function(){
+				return promiseAnimate(ball2, 200)
+			})
+			.then(function(){
+				return promiseAnimate(ball3, 150)
+			})
+			.then(function(){
+				return promiseAnimate(ball1, 150)
+			})
+			.then(function(){
+				return promiseAnimate(ball2, 150)
+			})
+	</script>
+</body>
+</html>

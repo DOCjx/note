@@ -1,0 +1,40 @@
+.contactUs {
+  padding: 50px 0 0 200px;
+}
+.contactUs .col-md-3 {
+  float: right;
+}
+.contactUs .col-md-3 .right-nav {
+  font-size: 30px;
+  padding: 100px 0 0 0;
+  position: fixed;
+  top: 20px;
+}
+.contactUs .col-md-3 .right-nav ul li {
+  list-style-type: none;
+}
+.contactUs .col-md-3 .right-nav .active a {
+  color: #0000ff;
+}
+.contactUs .col-md-3 .right-nav ul li a {
+  text-decoration: none;
+  color: #000000;
+}
+.contactUs .col-md-9 .left-content {
+  font-size: 24px;
+}
+.contactUs .col-md-9 .left-content .red-line {
+  border-left: 4px solid red;
+}
+.contactUs .col-md-9 .left-content .homyit-address {
+  padding-top: 50px;
+  height: 900px;
+}
+.contactUs .col-md-9 .left-content .student-join {
+  padding-top: 50px;
+  height: 900px;
+}
+.contactUs .col-md-9 .left-content .customer-contact {
+  padding-top: 50px;
+  height: 900px;
+}

@@ -1,0 +1,202 @@
+@charset:"utf-8";
+@nav_h:60px;
+@z_index:1;
+@stuff_height:30px;
+@font_size:20px;
+@page_w:1520px;
+@font-face {
+	font-family: 'iconfont';
+    src: url('../vendor/icon/iconfont.eot'); /* IE9*/
+    src: url('../vendor/icon/iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../vendor/icon/iconfont.woff') format('woff'), /* chrome、firefox */
+    url('../vendor/icon/iconfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url('../vendor/icon/iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+body,ul{ 
+	margin:0;
+	padding:0;
+	width:100%;
+}
+a{
+ text-decoration: none;
+}
+li{
+	list-style: none;
+}
+
+header.header{
+    width:100%;
+    height:500px;
+    position:relative;
+    background:url(/public/images/laptop75.jpg) no-repeat;
+    background-size:100% 500px;
+}
+/*--------------------------------nav start----------------------------*/
+       .positionFixed{
+           position:fixed;
+       }
+       .positionAbsolute{
+           position:absolute;
+       }
+       #nav{		
+			width:100%;
+	        height:@nav_h;
+			z-index:@z_index;			
+			// overflow: hidden;
+    	}
+        
+       .navTop{
+			top:0;
+			-pie-background-color: rgba(1,1,1,1);
+			background-color: rgba(1,1,1,1);
+			-webkit-transition:all .5s;
+			-ms-transition:all .5s;
+			transition:all .5s;
+
+			// border:1px solid #eee;
+		}
+		       
+        .center{
+        	 margin:0 auto;
+        	 width:1170px;
+        	 height:100%;
+        	 position:relative;
+        }
+		.logo,.three,.github{
+			display: inline-block;
+			height:@nav_h;
+			line-height:@nav_h;
+			font-family:"iconfont" !important;
+
+		    -webkit-font-smoothing: antialiased;
+		    -webkit-text-stroke-width: 0.2px;
+		    -moz-osx-font-smoothing: grayscale;
+		   
+		} 
+		.logo,.three,.nav_menu,.github{
+			position:relative;
+		}
+
+		.logo{
+			-webkit-transform:translateY(-26px);
+			-ms-transform:translateY(-26px);
+			transform:translateY(-23px);
+		    // left:250px;
+		}
+		.logo img{
+            width:170px;
+           
+		}
+
+		.three {
+			margin-left:10px;
+			-webkit-transform:translateY(-25px);
+			-ms-transform:translateY(-25px);
+		    transform:translateY(-25px);
+		    // left:250px;
+		}
+		.three a{
+			text-decoration:none;
+			color:#eee;
+		}
+
+		.nav_menu{
+			left:50px;
+			display:inline-block;
+			width:500px;
+			height:@nav_h;
+		    font-family:"YouYuan";
+			transform:translateY(-2px);
+			-ms-transform:translateY(-2px);
+			-webkit-transform:translateY(-2px);
+
+		}
+		.nav_menu li{
+		    float:left;
+		    text-align:center;
+		  
+		    font-weight: bold;
+		    width:15%;
+		    font-size:20px;
+		}
+		.nav_menu li a{
+
+			display:block;
+			line-height:@nav_h;
+			color:#eee;
+			text-decoration:none;
+		}
+		.nav_menu li a:hover,.github a:hover,.three a:hover{
+			-ms-transition:color .5s;
+			-webkit-transition:color .5s;
+			transition:color .5s;
+			color:#FF9900;
+		}
+
+
+		.github{
+			// -webkit-transform:translate(400px,-20px);
+			// -ms-transform:translate(400px,-20px);
+		 //    transform:translate(400px,-20px);
+		    position:absolute;
+		    right:0;			
+			font-size:20px;
+		}
+		.github img{
+				vertical-align:middle;
+				padding-right: 10px;
+		}
+		.github a{
+			display:inline-block;
+		    color:#eee;
+		    height:@nav_h;
+			text-decoration:none;
+		
+            -webkit-transform:translateY(-5px);
+            -ms-transform:translateY(-5px);
+			transform:translateY(-5px);
+		}
+		.github a b{
+			font-size:30px;
+			padding-right:10px;
+		}
+		.github a strong{
+			font-family:"微软雅黑";
+		    font-size:13px;
+			font-weight:lighter;
+			display:inline-block;
+			-ms-transform:translateY(-2px);
+			-webkit-transform:translateY(-2px);
+			transform:translateY(-2px);
+			
+
+
+		}
+		.three a b{
+		    font-size:22px;
+		}
+		.hide_nav{
+			top:-60px;
+		}
+		
+      
+      .change_color{
+          background-color:rgba(1,1,1,1);
+      }
+      .hide_color{
+          background-color: rgba(1,1,1,0);
+      }
+      // @media only screen and (max-width:800px){
+      // 	 #nav{
+      // 	 	position: absolute;
+      // 	 	background-color:rgba(255,255,255,.8);	      	 	
+      // 	 	width:1500px;
+      // 	 }
+
+      // 	 header.header{
+      //         width:1500px;
+      // 	 }
+      // }
+     
+/*-------------------nav end----------------*/

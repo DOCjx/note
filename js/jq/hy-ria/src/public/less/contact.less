@@ -1,0 +1,156 @@
+@base-font-size: 2px;
+@title-margin: 20px;
+@border-radius: 5px;
+@media (max-width: 1050px) {
+  .r-content {
+    display: none;
+  }
+}
+.contactUs {
+  width: 1170px;
+  margin: auto;
+  overflow: auto;
+  font-family: "微软雅黑";
+  .col-md-2 {
+    .r-content {
+    .right-nav{
+      position: fixed;
+      top: 100px;
+    }
+    font-size: @base-font-size*8;
+    padding-top: 100px;
+    ul li {
+      line-height: 40px;
+      list-style-type: none;
+      box-sizing: border-box;
+      padding-left: 60px;
+      a{
+        text-decoration: none;
+        color: #000000;
+
+      }
+    }
+    .active{
+      padding-left: 56px;
+      a{
+        color: red;
+      }
+      a:before{
+        content: "|";
+      }
+    }
+    }
+  }
+  .col-md-10 {
+    .left-content {
+      font-size: @base-font-size*8;
+      .red-line{
+        border-left: 6px solid red;
+        h3 {
+          font-weight: bolder;
+        }
+
+      };
+      .homyit-address {
+        padding-top: @title-margin;
+        .h-block {
+          padding-top: @title-margin;
+          text-align: center;
+        }
+      }
+      .student-join {
+        padding-top: @title-margin;
+
+        .s-content {
+          margin: auto;
+          width: 80%;
+          color: #000;
+          font-size: 20px;
+          text-align: inherit;
+          .detail-all {
+            margin-top: 36px;
+            height: auto;
+            p {
+              text-indent: 2em;
+            }
+          }
+          .bot-logo{
+            height: 130px;
+            img{
+              float: right;
+              width: 100px;
+              height:100px;
+            }
+          }
+
+        }
+      }
+    }
+    .customer-contact {
+      padding-top: @title-margin;
+      .c-block{
+        font:400 15px/16px "Open Sans", Helvetica, Arial, sans-serif;
+        line-height:28px;
+        color:#777;
+        .form-div{
+          background:#F9F9F9;
+          max-width:500px;
+          margin: 50px auto;
+          font-family: "微软雅黑";
+          border-radius: @border-radius;
+          box-shadow: 0px 0px 15px rgba(75, 75, 75, 0.3);
+          h3{
+            padding: 20px 0 0 30px;
+            color: #ff9966;
+          }
+          h5{
+            padding: 0 0 0 30px;
+          }
+        }
+        #contact {
+          padding:10px 70px 30px;
+          fieldset {
+            border: medium none;
+            margin: 0 0 10px;
+          }
+          .input{
+            width:100%;
+            border:1px solid #CCC;
+            background:#FFF;
+            border-radius: @border-radius;
+            margin:5px 5px;
+            padding:4px;
+          }
+          input{
+            .input;
+          }
+          textarea {
+            .input;
+            height:80px;
+            resize:none;
+          }
+          input:focus, textarea:focus {
+            outline:0;
+            border:1px solid #00a3cc;
+          }
+          button {
+            cursor:pointer;
+            width:100%;
+            border:none;
+            background:#00a3cc;
+            color:#FFF;
+            border-radius: @border-radius;
+            padding:5px;
+          }
+          button:hover {
+            background:#0089b7;
+            -webkit-transition:background 0.3s ease-in-out;
+            -moz-transition:background 0.3s ease-in-out;
+            transition:background-color 0.3s ease-in-out;
+          }
+        }
+      }
+    }
+  }
+
+}
