@@ -1,0 +1,253 @@
+a{
+	color: #333;
+}
+.send{
+	background-color: #ff692b;
+}
+
+
+.top{
+	position: relative;
+	height: 26px;
+	border-bottom: 1px solid #e7e7e7;
+}
+.top .topContent{
+	position: absolute;
+	line-height: 26px;
+	right: 80px;
+}
+.search{
+	/*width: 100%;*/
+	background: url(../img/mmexport1492147412499.jpg);
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+.search .searchL{
+	text-align: center;
+}
+.search .searchL img{
+	width: 150px;
+	height: 150px;
+}
+
+.box{
+	display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */ 
+	display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */ 
+	display: -ms-flexbox; /* TWEENER - IE 10 */ 
+	display: -webkit-flex; /* NEW - Chrome */ 
+	display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+	-webkit-box-pack: center;
+    -moz-justify-content: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+	-webkit-box-align: center;
+    -moz-align-items: center;
+    -webkit-align-items: center;
+    align-items: center;
+	height: 240px;
+}
+.box input,.box button{
+	border: 1px solid #ff692b;
+}
+.myNav{
+	background-color: #ff692b;
+}
+.myNav a{
+	color: #333;
+}
+.nav{
+	display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */ 
+	display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */ 
+	display: -ms-flexbox; /* TWEENER - IE 10 */ 
+	display: -webkit-flex; /* NEW - Chrome */ 
+	display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    -webkit-box-pack: space-around;
+    -moz-justify-content: space-around;
+    -webkit-justify-content: space-around;
+    justify-content: space-around;
+    width: 100%;
+	font-size: 20px;
+	font-weight: 600;
+}
+.dropdown-menu a{
+	font-size: 18px;
+}
+/*.contentL,.contentM,.contentR{
+	border: 1px solid #666;
+}
+.banner,.list{
+	border: 1px solid #666;
+	height: 300px;
+}*/
+.Mcontent .banner{
+	margin: 0;
+	padding: 0;
+}
+.content .contentL{
+	margin: 0;
+	padding: 0;
+}
+.Mcontent{
+	display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */ 
+	display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */ 
+	display: -ms-flexbox; /* TWEENER - IE 10 */ 
+	display: -webkit-flex; /* NEW - Chrome */ 
+	display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+	-webkit-box-align: center;
+    -moz-align-items: center;
+    -webkit-align-items: center;
+    align-items: center;
+	-webkit-box-direction: normal;
+    -webkit-box-orient: vertical;
+    -moz-flex-direction: column;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+}
+h4{
+	text-align: center;
+}
+.content .contentL .form-group{
+	margin-bottom: 0px;
+}
+.content .contentL input{
+	border: 1px solid #ff692b;
+}
+.contentM{
+	margin-top: 10px;
+}
+.list{
+	margin-top: 35px;
+	padding: 0;
+}
+.listHeader{
+	font-size: 16px;
+	font-weight: 600;
+	border-bottom: 1px solid #e7e7e7;
+}
+.listHeader:after{
+	content:".";        
+    display:block;        
+    height:0;        
+    clear:both;        
+    visibility:hidden; 
+}
+.listContent{
+	margin-top: 10px;
+}
+.listContent li{
+	font-size: 17px;
+	height: 26px;
+}
+.contentR{
+	padding: 0;
+}
+.Rcontent{
+	display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */ 
+	display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */ 
+	display: -ms-flexbox; /* TWEENER - IE 10 */ 
+	display: -webkit-flex; /* NEW - Chrome */ 
+	display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+	flex-direction: column;
+	-webkit-box-align: flex-end;
+    -moz-align-items: flex-end;
+    -webkit-align-items: flex-end;
+    align-items: flex-end;
+	-webkit-box-pack: space-around;
+    -moz-justify-content: space-around;
+    -webkit-justify-content: space-around;
+    justify-content: space-around;
+	height: 345px;
+	/*border: 1px solid #666;*/
+}
+.Rcontent .listItem{
+	display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */ 
+	display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */ 
+	display: -ms-flexbox; /* TWEENER - IE 10 */ 
+	display: -webkit-flex; /* NEW - Chrome */ 
+	display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+	-webkit-box-align: center;
+    -moz-align-items: center;
+    -webkit-align-items: center;
+    align-items: center;
+	-webkit-box-pack: center;
+    -moz-justify-content: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+	flex-direction: row;
+	height: 145px;
+	background-color: #eaeaea;
+	border: 1px solid #c0bcbc;
+	border-bottom: 1px solid #adabab;
+}
+.listIL{
+	/*flex: 1;*/
+	
+	margin: 10px;
+	font-size: 17px;
+	/*border: 1px solid #666;*/
+}
+.listIR{
+	width: 151px;
+	margin: 10px;
+}
+footer{
+    text-align: center;
+}
+.footer address{
+	line-height: 18px;
+	margin-top: 16px;
+}
+.footer .footerFlex{
+	display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */ 
+	display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */ 
+	display: -ms-flexbox; /* TWEENER - IE 10 */ 
+	display: -webkit-flex; /* NEW - Chrome */ 
+	display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    -webkit-box-align: center;
+    -moz-align-items: center;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -moz-justify-content: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+}
+.footer img{
+	width: 115px;
+	height: 115px;
+}
+.fiexBox{
+	position: fixed;
+	right: 20px;
+	top: 60%;
+	width: 100px;
+	height: 100px;
+	border: 2px solid #ff692b;
+	z-index: 999;
+}
+.fiexBox h4{
+	margin: 0;
+	background-color: #ff692b;
+	padding: 3px;
+}
+.fiexBoxC{
+	display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */ 
+	display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */ 
+	display: -ms-flexbox; /* TWEENER - IE 10 */ 
+	display: -webkit-flex; /* NEW - Chrome */ 
+	display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+	flex-direction: column;
+	-webkit-box-align: center;
+    -moz-align-items: center;
+    -webkit-align-items: center;
+    align-items: center;
+	-webkit-box-pack: space-around;
+    -moz-justify-content: space-around;
+    -webkit-justify-content: space-around;
+    justify-content: space-around;
+	height: 73px;
+}
+.fiexBoxC span{
+	display: inline-block;
+	font-size: 15px;
+}

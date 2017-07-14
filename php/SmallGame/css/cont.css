@@ -1,0 +1,112 @@
+/* base css */
+html,
+body,
+h1,h2,h3,h4,h5,h6,
+div,
+a,
+form,input,
+table,td,th,
+ul,li,
+span {
+	margin: 0;
+	padding: 0;
+}
+a {
+	text-decoration: none;
+}
+li {
+	list-style: none;
+}
+.clear {
+	clear: both;	
+}
+
+/* case css */
+body {
+	background: #eee;
+}
+.contair {
+	width: 800px;
+	height: 480px;
+	margin: 60px auto 0;
+	border: 1px solid #eee;
+	font-family: 宋体, sans-serif;
+	background: #fff;
+	color: #4DB3A2;
+}
+.contair .haeder {
+	line-height: 60px;
+	text-align: center;
+	font-size: 22px;
+	border-bottom: 1px solid #EFEFEF;
+}
+.contair .content {
+	width: 640px;
+	height: 340px;
+	margin: 20px auto 0;
+}
+.contair .content-head {
+	padding-left: 30px;
+	font-size: 18px;
+}	
+.contair .content input {
+	margin-left: 40px;
+}
+.contair .content img {
+	width: 136px;
+	height: 100px;
+} 
+.contair .content .result {
+	width: 380px;
+	margin: 20px auto 0;
+}
+.contair .content .result .vs-top {
+	margin-bottom: 5px;
+}
+.contair .content .result .vs-ttip {
+	margin-left: 190px;
+}
+.contair .content .result .vs-stip {
+	line-height: 60px;
+	font-size: 100px;
+}
+.contair .content .result p {
+	font-size: 22px;
+	text-align: center;
+}
+.contair .footer {
+	line-height: 60px;
+	border-top: 1px solid #EFEFEF;	
+}
+.contair .footer .footer-button {
+	width: 520px;
+	margin: 0 auto;
+	text-align: right;
+}
+.contair .footer input {
+	padding: 6px 10px;
+	font-size: 15px;
+}
+.contair #res {
+	padding: 6px 10px;
+	border: 2px solid #E5E5E5;
+	font-size: 15px;
+	background: #E5E5E5;
+	color: #333;
+}
+.contair #res:hover {
+	border: 2px solid #26a69a;
+	background: #26a69a;
+	color: #eee;
+}
+.contair #sub {
+	padding: 6px 10px;
+	border: 2px solid #26a69a;
+	font-size: 15px;
+	background: #26a69a;
+	color: #eee;
+}
+.contair #sub:hover {
+	border: 2px solid #1F897F;
+	background: #1F897F;
+}

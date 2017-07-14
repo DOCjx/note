@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Observer</title>
+	<link rel="stylesheet" href="">
+	<script src="./lodash.js"></script>
+	<script type="text/javascript" src="./index.js"></script>
+</head>
+<body>
+	<script type="text/javascript">
+		(() => {
+			let arr = [5, [3, 2]];
+			arr[1]["key"] = 99;
+			arr[1]["book"] = 99;
+			console.log(arrayToTree(arr));
+			const Observer = (() => {
+				let _messages = {};
+				return {
+					regist() {
+
+					},
+					fire() {
+
+					},
+					remove() {
+
+					},
+				}
+			})();
+		})();
+		
+	</script>
+</body>
+</html>

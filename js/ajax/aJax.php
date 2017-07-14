@@ -26,7 +26,7 @@
 				
 				//request方法
 				const data = "name="+document.getElementById("keyword").value;
-				request.open("POST","./7.6.3.php");//http://127.0.0.1/note/js/ajax
+				request.open("POST","http://127.0.0.1/note/js/ajax");//http://127.0.0.1/note/js/ajax./7.6.3.php
 				request.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
 				request.send(data);
 				

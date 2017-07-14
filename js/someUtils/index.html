@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Observer</title>
+    <link rel="stylesheet" href="">
+    <script src="./lodash.js"></script>
+    <script type="text/javascript" src="./index.js"></script>
+</head>
+<body>
+    <script type="text/javascript">
+        (() => {
+            const arr = [
+                {
+                    "id": "a",
+                    "pid": 0,
+                    "name": "生活"
+                },
+                {
+                    "id": "b",
+                    "pid": "a",
+                    "name": "诗",
+                    action(){
+                        console.log('id:', this.id);
+                    },
+                },
+                {
+                    "id": "c",
+                    "pid": "a",
+                    "name": "远方"
+                },
+                {
+                    "id": "d",
+                    "pid": "0",
+                    "name": "工作"
+                },
+                {
+                    "id": "e",
+                    "pid": "c",
+                    "name": "未知"
+                }
+            ];
+
+            //数组转树结构
+            console.log('arrayToTree:', arrayToTree(arr));
+            //克隆一个数组
+            // const oNew = simpleClone(arr);
+            const oNew = deepClone(arr);
+
+            arr[1].action = function() {
+                console.log('pid:', this.pid);
+            };
+            arr[1].action();//simplleClone：a    deepClone：a
+            oNew[1].action();//simplleClone：a    deepClone：b
+            console.log('oNew:', oNew);
+            //一个奇怪现象，与php的不同
+            const arr1 = [{a: 1}];
+            const arr2 = [{b: 2}];
+            const arr3 = [{c: 3}];
+            //猜测。。。push里面的添加是添加了引用
+            arr1.push(arr2);
+            arr2.push(arr3);
+            console.log(arr1);//[{a: 1}, [{b: 2}, [{c: 3}]]]
+        })();
+    </script>
+</body>
+</html>
