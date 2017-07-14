@@ -3,7 +3,7 @@ namespace Home\Controller;
 use Think\Controller;
 class IndexController extends BaseController {
     public function index(){
-    	$this->display();
+        $this->display();
     }
     public function userLogin(){
         $userName = D('User')->getUser();
@@ -12,11 +12,11 @@ class IndexController extends BaseController {
         $this->display();
     }
     public function login(){
-    	$user_id = I('user_id');
-    	$psw = I('psw');
-    	$result = D('User')->checkLogin($user_id,$psw);
-    	// var_dump($user_id,$psw);
-    	if( $result ){
+        $user_id = I('user_id');
+        $psw = I('psw');
+        $result = D('User')->checkLogin($user_id,$psw);
+        // var_dump($user_id,$psw);
+        if( $result ){
             $this->success('登入成功！','Index/index');
         } else {
             $this->error('用户名不存在或密码错误！');
@@ -41,7 +41,7 @@ class IndexController extends BaseController {
         if($userInfo){
             $addUser = D('User')->addUser();
         }
-    	if( $addUser ){
+        if( $addUser ){
             $this->success('注册成功！','Index/index',3);
         } else {
             $this->error('用户名已存！');

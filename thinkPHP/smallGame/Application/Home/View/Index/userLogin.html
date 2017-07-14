@@ -2,31 +2,31 @@
 <block name="body">
     <div id="background">
         <empty name="session">
-        	<h1>请先登入哦！</h1>
-		    <form method="post" action="{:U('Index/login')}">
-		    	<div id="content">
-		        	<div class="card1">
-		           		<p>账号：<input type="text" name="user_id" required="required"></p>
-		            	<p>密码：<input type="password" name="psw" required="required"></p>
-		        	</div>
-		    	</div>
-		    	<div id="result">
-		        	<span>还没账号<a style="text-decoration:none;" href="{:U('Index/addUser')}">注册</a></span>
-		    	</div>
-		    	<div id="footer">
-		        	<input type="submit" value="登入" id="sub" name="sub">
-		    	</div>
-		    </form>
+            <h1>请先登入哦！</h1>
+            <form method="post" action="{:U('Index/login')}">
+                <div id="content">
+                    <div class="card1">
+                           <p>账号：<input type="text" name="user_id" required="required"></p>
+                        <p>密码：<input type="password" name="psw" required="required"></p>
+                    </div>
+                </div>
+                <div id="result">
+                    <span>还没账号<a style="text-decoration:none;" href="{:U('Index/addUser')}">注册</a></span>
+                </div>
+                <div id="footer">
+                    <input type="submit" value="登入" id="sub" name="sub">
+                </div>
+            </form>
         <else />
-        	<h1>你已经登入！</h1>
-	        <form action="">
-		    	<div id="content">
-	        	<div class="card1" style="width:300px;">
-					<p><font style="color:green;font-size:18px;">{$userName}欢迎你！可以开始游戏了！</font></p>
-					<p><a style="font-size:18px;text-decoration: none;" href="{:U('Admin/Index/editUser',array('editUserId'=>$_SESSION['id']))}">修改信息</a></p>
-	        	</div>
-	        	</div>
-	        </form>
+            <h1>你已经登入！</h1>
+            <form action="">
+                <div id="content">
+                <div class="card1" style="width:300px;">
+                    <p><font style="color:green;font-size:18px;">{$userName}欢迎你！可以开始游戏了！</font></p>
+                    <p><a style="font-size:18px;text-decoration: none;" href="{:U('Admin/Index/editUser',array('editUserId'=>$_SESSION['id']))}">修改信息</a></p>
+                </div>
+                </div>
+            </form>
         </empty>
     </div>
 </block>

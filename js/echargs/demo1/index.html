@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>简单示例</title>
-	<script src="../echarts.js"></script>
-	<script src="../../Jquery3.0/jquery-3.0.0.js"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>简单示例</title>
+    <script src="../echarts.js"></script>
+    <script src="../../Jquery3.0/jquery-3.0.0.js"></script>
 </head>
 <body>
-	<body>
+    <body>
     <!-- 为 ECharts 准备一个具备大小（宽高）的 DOM -->
     <div id="main" style="width: 600px;height:400px;"></div>
     <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
@@ -16,41 +16,41 @@
     <script type="text/javascript">
         var myChart = echarts.init(document.getElementById('main'));
         myChart.showLoading();
-		// 显示标题，图例和空的坐标轴
-		myChart.setOption({
-		    title: {
-		        text: '异步数据加载示例'
-		    },
-		    tooltip: {},
-		    legend: {
-		        data:['销量']
-		    },
-		    xAxis: {
-		        data: []
-		    },
-		    yAxis: {},
-		    series: [{
-		        name: '销量',
-		        type: 'bar',
-		        data: []
-		    }]
-		});
+        // 显示标题，图例和空的坐标轴
+        myChart.setOption({
+            title: {
+                text: '异步数据加载示例'
+            },
+            tooltip: {},
+            legend: {
+                data:['销量']
+            },
+            xAxis: {
+                data: []
+            },
+            yAxis: {},
+            series: [{
+                name: '销量',
+                type: 'bar',
+                data: []
+            }]
+        });
 
-		// 异步加载数据
-		$.get('data.json').done(function (data) {
-			myChart.hideLoading();
-		    // 填入数据
-		    myChart.setOption({
-		        xAxis: {
-		            data: data.categories
-		        },
-		        series: [{
-		            // 根据名字对应到相应的系列
-		            name: '销量',
-		            data: data.data
-		        }]
-		    });
-		});
+        // 异步加载数据
+        $.get('data.json').done(function (data) {
+            myChart.hideLoading();
+            // 填入数据
+            myChart.setOption({
+                xAxis: {
+                    data: data.categories
+                },
+                series: [{
+                    // 根据名字对应到相应的系列
+                    name: '销量',
+                    data: data.data
+                }]
+            });
+        });
     </script>
 </body>
 </body>

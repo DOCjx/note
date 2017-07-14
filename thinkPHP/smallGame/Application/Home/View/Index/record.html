@@ -2,48 +2,48 @@
 <block name="body">
     <div id="background">
         <h1>猜数字的游戏记录：</h1>
-    	<div id="content">
-			<table>
-				<tr class="first">
-					<td>游戏名称</td>
-					<td>上一次游戏时间</td>
-					<td>尝试次数</td>
-					<td>游戏结果</td>
-				</tr>
-				<volist name="data" id="dataDetial">
-					<tr>
-						<td>{$dataDetial['game_name']}</td>
-						<td>{$dataDetial['updata_time']|date='Y-m-d H:i:s',###}</td>
-						<td>{$dataDetial['times']}</td>
-						<td>{$dataDetial['result']}</td>
-					</tr>
-				</volist>
-			</table>
-		</div>
-		<div id="footer1">
-		    <span>{$page}</span>
-		</div>
+        <div id="content">
+            <table>
+                <tr class="first">
+                    <td>游戏名称</td>
+                    <td>上一次游戏时间</td>
+                    <td>尝试次数</td>
+                    <td>游戏结果</td>
+                </tr>
+                <volist name="data" id="dataDetial">
+                    <tr>
+                        <td>{$dataDetial['game_name']}</td>
+                        <td>{$dataDetial['updata_time']|date='Y-m-d H:i:s',###}</td>
+                        <td>{$dataDetial['times']}</td>
+                        <td>{$dataDetial['result']}</td>
+                    </tr>
+                </volist>
+            </table>
+        </div>
+        <div id="footer1">
+            <span>{$page}</span>
+        </div>
     </div>
     <div id="background">
         <h1>心灵感应的游戏记录：</h1>
-    	<div id="content">
-			<table>
-				<tr class="first">
-					<td>游戏名称</td>
-					<td>上一次游戏时间</td>
-					<td>你想的数字</td>
-				</tr>
-				<volist name="data1" id="dataDetial1">
-					<tr>
-						<td>{$dataDetial1['game_name']}</td>
-						<td>{$dataDetial1['updata_time']|date='Y-m-d H:i:s',###}</td>
-						<td>{$dataDetial1['result']}</td>
-					</tr>
-				</volist>
-			</table>
-		</div>
-		<div id="footer1">
-		    <span>{$page1}</span>
-		</div>
+        <div id="content">
+            <table>
+                <tr class="first">
+                    <td>游戏名称</td>
+                    <td>上一次游戏时间</td>
+                    <td>你想的数字</td>
+                </tr>
+                <volist name="data1" id="dataDetial1">
+                    <tr>
+                        <td>{$dataDetial1['game_name']}</td>
+                        <td>{$dataDetial1['updata_time']|date='Y-m-d H:i:s',###}</td>
+                        <td>{$dataDetial1['result']}</td>
+                    </tr>
+                </volist>
+            </table>
+        </div>
+        <div id="footer1">
+            <span>{$page1}</span>
+        </div>
     </div>
 </block>

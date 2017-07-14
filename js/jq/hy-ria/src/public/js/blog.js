@@ -1,7 +1,7 @@
 define(function (require, exports, module) {
     exports.init = function(){
 //右侧模拟fiexd
-    	$(window).scroll(function(){
+        $(window).scroll(function(){
             var targetTop = $(this).scrollTop();
             if (targetTop >= 430){
                 var top=targetTop-430+"px";
