@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>prototype test</title>
+</head>
+<body>
+    <script type="text/javascript">
+        (() => {
+            //原题
+            const Scope = function() {};
+            Scope.prototype.$clone = function()  {
+                const o = function(){};
+                o.prototype = this;
+                return new o();
+            }
+            var scopeA = new Scope();
+            scopeA.title = 'my title';
+            var scopeB = scopeA.$clone();
+            console.log(scopeB.title === 'my title');
+            scopeA.title = 'Home title';
+            console.log(scopeB.title === 'Home title');
+            scopeB.title = 'scopeB title';
+            console.log(scopeA.title === 'Home title');
+
+            //修改，一个不恰当的例子用来说明这种模式可以给所有克隆出来的子类都加上一个默认值的属性
+            //厂家类
+            function Productor(){
+                this.price = 99;//建议全国零售价
+            }
+            Productor.prototype.$clone = function(){
+                const o = new Productor();
+                o.__proto__ = this;
+                return o;
+            }
+            //经销商
+            const businessman = new Productor();
+            //药品地区零售价
+            businessman.localPrice = 199;
+            //经销商批发价
+            businessman.price = 88;
+            //医院
+            const hospitalA = businessman.$clone();
+            const hospitalB = businessman.$clone();
+            const hospitalC = businessman.$clone();
+            //将药品出处设为医务所所在地点
+            hospitalA.place = "校医院";
+            //三个医务所统一的批发价
+            console.log("businessman.price:", businessman.price);//88
+            //三个医务所都知道官方零售价
+            console.log("hospitalA.price:", hospitalA.price);//99
+            console.log("hospitalB.price:", hospitalB.price);//99
+            console.log("hospitalC.price:", hospitalC.price);//99
+            //医务所可以修改自己的地区实际零售价
+            hospitalC.localPrice = 200;
+            console.log("hospitalB.localPrice:", hospitalB.localPrice);//199
+            console.log("hospitalC.localPrice:", hospitalC.localPrice);//200
+        })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>perate of responsibility</title>
+</head>
+<body>
+    <div id="demo">demo of perate responsibility</div>
+    <script type="text/javascript">
+        (() => {
+            const $ = (selector, context) => {
+                return new $.fn.init(selector, context);
+            };
+            $.fn = $.prototype = {
+                constructor: $,
+                init: function(selector, context) {
+                    this.length = 0;
+                    context = context || document;
+                    if (~selector.indexOf('#')) {
+                        this[0] = document.getElementById(selector.slice(1));
+                        this.length = 1;
+                    } else {
+                        const doms = context.getElementsByTagName(selector),
+                            len = doms.length;
+                        let i = 0;
+                        while (i<len) {
+                            this[i] = dom[i];
+                        }
+                        this.length = len;
+                    }
+                    this.context = context;
+                    this.selector = selector;
+                    return this;
+                },
+                size: function() {
+                    return this.length;
+                },
+                push: [].push,
+                sort: [].sort,
+                splice: [].splice
+            };
+            $.fn.init.prototype = $.fn;
+            $.extend = $.fn.extend = function() {
+                let i = 1,
+                    len = arguments.length,
+                    target = arguments[0],
+                    j;
+                if(i == len) {
+                    target = this;
+                    i--;
+                }
+                for(; i < len; i++){
+                    for (j in arguments[i]){
+                        console.log(arguments[i]);
+                        target[j] = arguments[i][j];
+                    }
+                }
+                return target;
+            }
+
+            const demo = $.extend({fist: 1}, {second: 2}, {third: 3});
+            console.log(demo);
+
+        })();
+    </script>
+</body>
+</html>

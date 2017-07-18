@@ -1,32 +1,129 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Observer</title>
-	<link rel="stylesheet" href="">
-	<script src="./lodash.js"></script>
-	<script type="text/javascript" src="./index.js"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Observer</title>
+    <link rel="stylesheet" href="">
+    <style>
+        span:before{
+            content: "";
+            display: block;
+            width: 0;
+            height: 0;
+            border-right: 6px solid red;
+            position: absolute;
+        }
+    </style>
 </head>
 <body>
-	<script type="text/javascript">
-		(() => {
-			const Observer = (() => {
-				let _messages = {};
-				return {
-					regist() {
+    <div>
+        <div>
+            <b id="msg_num">0</b>
+        </div>
+        <h1>最新消息</h1>
+        <ul id="msg">
+            <li>old message<span></span></li>
+        </ul>
+        <div>
+            <input type="text" id="user_input">
+            <input type="submit" id="user_submit">
+        </div>
+    </div>
+    <script type="text/javascript">
+        (() => {
 
-					},
-					fire() {
-
-					},
-					remove() {
-
-					},
-				}
-			})();
-		})();
-		
-	</script>
+            const Observer = (() => {
+                let __messages = {};
+                return {
+                    regist(type, fn) {
+                        if (typeof __messages[type] === "undefined") {
+                            __messages[type] = [fn];
+                        }else{
+                            __messages[type].push(fn);
+                        }
+                        return this;
+                    },
+                    fire(type, args) {
+                        if (!__messages[type]) {
+                            return ;
+                        }
+                        let events = {
+                            type: type,
+                            args: args || {}
+                        },
+                        i = 0,
+                        len = __messages[type].length;
+                        while (i < len) {
+                            // __messages[type][i](events);
+                            __messages[type][i].call(this, events);
+                            i++;
+                        }
+                        return this;
+                    },
+                    remove(type, fn) {
+                        if(__messages[type] instanceof Array) {
+                            let i = __messages[type].length - 1;
+                            while (i >= 0) {
+                                __messages[type][i] === fn && __messages[type].splice(i, 1);
+                                i--;
+                            }
+                        }
+                        return this;
+                    },
+                }
+            })();
+            // Observer
+            //     .regist("test", function(e) {
+            //         console.log(this)
+            //         console.log(e.type, e.args.msg);
+            //     })
+            //     .regist("test2", function(e) {
+            //         console.log('test2', e.args.msg)
+            //     });
+            // Observer.fire("test", {msg: "传参"});
+            // Observer.fire("test2", {msg: "传参"});
+            const $ = (id) => {
+                return document.getElementById(id);
+            }
+            (() => {
+                const addMsgItem = e => {
+                    let text = e.args.text,
+                        ul = $('msg'),
+                        li = document.createElement('li'),
+                        span = document.createElement('span');
+                    li.innerHTML = text;
+                    span.onclick = () => {
+                        ul.removeChild(li);
+                        Observer.fire("removeCommentMessage", {
+                            num: -1,
+                        });
+                    }
+                    li.appendChild(span);
+                    ul.appendChild(li);
+                }
+                Observer.regist('addCommentMessage', addMsgItem);
+            })();
+            (() => {
+                const changeMsgNum = e => {
+                    let num = e.args.num;
+                    $('msg_num').innerHTML = parseInt($('msg_num').innerHTML) + num;
+                }
+                Observer
+                    .regist('addCommentMessage', changeMsgNum)
+                    .regist('removeCommentMessage', changeMsgNum);
+            })();
+            (() => {
+                $("user_submit").onclick = () => {
+                    let text = $("user_input");
+                    if(text.value === "") return;
+                    Observer.fire("addCommentMessage", {
+                        text: text.value,
+                        num: 1,
+                    });
+                }
+            })();
+        })();
+    </script>
 </body>
 </html>
