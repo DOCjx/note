@@ -30,7 +30,8 @@
                     }
                     this.context = context;
                     this.selector = selector;
-                    return this;
+                    console.log("this", this);
+                    // return this;
                 },
                 size: function() {
                     return this.length;
@@ -57,10 +58,9 @@
                 }
                 return target;
             }
-
-            const demo = $.extend({fist: 1}, {second: 2}, {third: 3});
+            // const demo = $.extend({fist: 1}, {second: 2}, {third: 3});
+            const demo = $('#demo');
             console.log(demo);
-
         })();
     </script>
 </body>

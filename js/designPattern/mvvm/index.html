@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>mvvm</title>
+    <style>
+        .box{
+            width: 50%;
+            margin: auto;
+        }
+        .ui{
+            position: relative;
+            height: 20px;
+            border: 1px solid #666;
+            margin-top: 50px;
+            border-radius: 5px;
+        }
+        .ui em,b{
+            position: absolute;
+        }
+        .ui b{
+            right: -34px;
+        }
+        .ui em{
+            top: -20px;
+        }
+        .ui div{
+            position: absolute;
+            background-color: #888;
+            height: 20px;
+            animation:all .6s;
+        }
+        .ui span{
+            position: relative;
+            top: -2px;
+            display: block;
+            background-color: #666;
+            height: 24px;
+            width: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div data-bind="type: 'slider', data: demo1" class="ui"></div>
+        <div data-bind="type: 'slider', data: demo2" class="ui"></div>
+        <div data-bind="type: 'progressbar', data: demo3" class="ui"></div>
+    </div>
+    <script type="text/javascript">
+        ~(() => {
+            const window = this || (0, eval)('this');
+            const FONTSIZE = (() => {
+                return parseInt(document.body.currentStyle ? document.body.currentStyle['fontSize'] :getComputedStyle(document.body, false)['fontSize']);
+            })();
+            const VM = (() => {
+                const Method = {
+                    progressbar(dom, data) {
+                        const progress = document.createElement('div'),
+                              param = data.data;
+                        progress.style.width = (param.position || 100) + '%';
+                        dom.className = dom.className.split(' ')[0] + ' ui-progressbar';
+                        dom.appendChild(progress);
+                    },
+                    slider(dom, data) {
+                        const bar = document.createElement('span'),
+                              progress = document.createElement('div'),
+                              param = data.data,
+                              width = dom.clientWidth,
+                              left = dom.offsetLeft,
+                              realWidth = (param.position || 100) * width / 100;;
+                        let  totleText = null,
+                             progressText = null;
+                        dom.innerHTML = '';
+                        if(param.totle) {
+                            text = document.createElement('b');
+                            progressText = document.createElement('em');
+                            text.innerHTML = param.totle;
+                            dom.appendChild(text);
+                            dom.appendChild(progressText);
+                        }
+                        const setStyle = w => {
+                            progress.style.width = w + 'px';
+                            const barPos = w - FONTSIZE / 2 * 2.4 + 'px';
+                            bar.style.left = parseInt(barPos) <= 0 ? 0 : barPos;
+                            if(progressText)
+                                progressText.innerHTML = parseFloat(w / width * 100).toFixed(2) + '%';
+                        };
+                        setStyle(realWidth);
+                        dom.className = dom.className.split(' ')[0] + ' ui-slider';
+                        dom.appendChild(progress);
+                        dom.appendChild(bar);
+                        bar.onmousedown = () => {
+                            document.onmousemove = ev => {
+                                const e = ev || window.event;
+                                const w = e.clientX - left;
+                                setStyle(w < width ? (w > 0 ?w : 0) : width);
+                            }
+                            document.onselectstart = () => false;
+                            document.onmouseup = () => {
+                                document.onmousemove = null;
+                                document.onselectstart = null;
+                            }
+                        };
+                    }
+                };
+                const getBindData = dom => {
+                    const data = dom.getAttribute('data-bind');
+                    return !!data && (new Function("return ({" + data + "})"))();
+                }
+                return () => {
+                    const doms = document.body.getElementsByTagName('*');
+                    let ctx = null;
+                    for(let i = 0; i < doms.length; i++) {
+                        // console.log('doms[i]:', doms[i]);
+                        ctx = getBindData(doms[i]);
+                        ctx.type && Method[ctx.type] && Method[ctx.type](doms[i], ctx);
+                    }
+                }
+            })();
+            window.VM = VM;
+        })();
+        const demo1 = {
+                position: 20,
+                totle: 200
+              },
+              demo2 = {
+                position: 20
+              },
+              demo3 = {
+                position: 50
+              };
+        window.onload = function() {
+            VM();
+        };
+        window.onresize = ev => {
+            VM();
+        }
+    </script>
+</body>
+</html>

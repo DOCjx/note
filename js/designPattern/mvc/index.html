@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MVC</title>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+    <div id="box"></div>
+    <script type="text/javascript">
+        $(() => {
+            $.extend({
+                formateString(str, data) {
+                    const html = '';
+                    if(data instanceof Array) {
+                        for (let i = 0, len = data.length; i < len; i++) {
+                            html += arguments.callee(str, data[i]);
+                        }
+                        return html;
+                    } else {
+                        return str.replace(/\{#(\w+)#\}/g, (match, key) => {
+                            return typeof data === 'string' ? data : (typeof data[key] === 'undefined' ? '' : data[key]);
+                        })
+                    }
+                }
+            })
+            var MVC = MVC || {};
+            MVC.model = (() => {
+                const M = {};
+                M.data = {
+                    slideBar: [
+                        {
+                            text: "fist",
+                            href: "http:\/\/www.baidu.com"
+                        },
+                        {
+                            text: "second",
+                            href: "http:\/\/www.baidu.com"
+                        },
+                        {
+                            text: "third",
+                            href: "http:\/\/www.baidu.com"
+                        }
+                    ]
+                };
+                M.conf = {
+                    slideBarCloseAnimate: false
+                };
+                return {
+                    getData(m) {
+                        return M.data[m];
+                    },
+                    getConf(c) {
+                        return M.conf[c];
+                    },
+                    setData(m, v) {
+                        M.data[m] = v;
+                        return this;
+                    },
+                    setConf(c, v) {
+                        M.conf[c] = v
+                        return this;
+                    },
+                }
+            })();
+            MVC.view = (() => {
+                const M = MVC.model;
+                const V = {
+                    createSlideBar() {
+                        let html = "",
+                              data = M.getData("slideBar");
+                        if(!data || !data.length) return;
+                        const dom = $("<div class='slidebar' id='slidebar'>");
+                        const tpl = {
+                            container: [
+                                '<div class="slidebar-inner"><ul>{#content#}</ul></div>',
+                                '<a hidefocus href="#" class="slidebar-close" title="收起">收起</a>'
+                            ].join(''),
+                            item:
+                                '<li>'
+                                +'    <a href="{#href#}" class="icon">'
+                                +'    <span>{#text#}</span>'
+                                +'    </a>'
+                                +'</li>',
+                        };
+                        for(let i = 0, len = data.length; i < len; i++){
+                            html += $.formateString(tpl.item, data[i]);
+                        }
+                        dom
+                            .html(
+                                $.formateString(tpl.container, {content: html})
+                            )
+                            .appendTo('body');
+                    }
+                };
+                return v => {
+                    V[v] && V[v]();
+                }
+            })();
+            MVC.ctrl = (() => {
+                const M = MVC.model;
+                const V = MVC.view;
+                const C = {
+                    initSlideBar: function() {
+                        V('createSlideBar');
+                        $('li')
+                            .on('mouseover', function(e) {
+                                $(this).addClass('show');
+                            })
+                            .on('mouseout', function(e) {
+                                $(this).removeClass('show');
+                            });
+                    }
+                };
+                for(let i in C){
+                    C[i]();
+                }
+            })();
+        });
+    </script>
+</body>
+</html>

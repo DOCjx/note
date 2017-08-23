@@ -62,23 +62,23 @@
         //     .valueOf(item=>item/2)
         //     .valueOf();
         // caculate.sub(9).valueOf();
-        
+
         //另一种链式操作
-        const add = (x) => {
-            let sum = x;
+        // const add = (x) => {
+        //     let sum = x;
 
-            let tmp = (y) => {
-                sum += y;
-                return tmp;
-            }
+        //     let tmp = (y) => {
+        //         sum += y;
+        //         return tmp;
+        //     }
 
-            tmp.toString = () => {
-                return sum;
-            }
+        //     tmp.toString = () => {
+        //         return sum;
+        //     }
 
-            return tmp;
-        }
-        console.log(add(2)(3)(4));
+        //     return tmp;
+        // }
+        // console.log(add(2)(3)(4));
 
         //柯里化
         // function Currying(fn, ...args){
@@ -96,6 +96,26 @@
         // console.log( curGetPath('/img/me.png') );
         // console.log( curGetPath('/css/main.css') );
 
+        //另一种curry函数
+        function curry(fn) {
+            const Slice = [].slice;
+            const args = Slice.call(arguments, 1);
+            console.log("args:", args);
+            console.log("arguments:", arguments);
+            return function() {
+                console.log("argumentsAf:", arguments);
+                const addArgs = Slice.call(arguments),
+                      allArgs = args.concat(addArgs);
+                return fn.apply(null, allArgs);
+            }
+        }
+        const BASE = 'www/homyit/blog';
+        const getPath = (a, b) => a + b;
+        const curryAdd = curry(getPath);
+        console.log(curryAdd(5, 6));
+        const curGetPath = curry(getPath, BASE);
+        console.log( curGetPath('/img/me.png') );
+        console.log( curGetPath('/css/main.css') );
     </script>
 </body>
 </html>
