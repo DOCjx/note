@@ -1,0 +1,81 @@
+{
+  "errCode": 200,
+  "errMsg": "",
+  "data":[
+    {
+      "membersId": "1",
+      "name": "王宏凯",
+      "gradeId":"12"
+    },
+    {
+      "membersId": "2",
+      "name": "高玉花",
+      "gradeId":"12"
+    },
+    {
+      "membersId": "30",
+      "name": "罗强",
+      "gradeId":"12"
+    },
+    {
+      "membersId":"3",
+      "name": "罗凤丹",
+       "gradeId":"12"
+    },
+    {
+      "membersId": "4",
+      "name": "刘亮",
+      "gradeId":"12"
+    },
+    {
+      "membersId": "5",
+      "name": "吕金秀",
+      "gradeId":"12"
+    },
+    {
+      "membersId": "6",
+      "name": "陈浩宇",
+      "gradeId":"12"
+    },
+    {
+      "membersId": "7",
+      "name": "刘少宇",
+      "gradeId":"12"
+    },
+    {
+      "membersId": "8",
+      "name": "张敏",
+      "gradeId":"13"
+    },
+    {
+      "membersId": "9",
+      "name": "周舒雅",
+      "gradeId":"13"
+    },
+    {
+      "membersId": "10",
+      "name": "谢志强",
+      "gradeId":"13"
+    },
+    {
+      "membersId": "33",
+      "name": "林嘉桦",
+      "gradeId":"13"
+    },
+    {
+      "membersId": "11",
+      "name": "施佳航",
+      "gradeId":"13"
+    },
+    {
+      "membersId": "31",
+      "name": "李晓科",
+      "gradeId":"12"
+    },
+    {
+      "membersId": "32",
+      "name": "余荣攀",
+      "gradeId":"12"
+    }
+  ]
+}

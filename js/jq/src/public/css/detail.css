@@ -1,0 +1,265 @@
+@font-face {
+  font-family: 'iconfont2';
+  src: url('../vendor/icon2/iconfont.eot');
+  src: url('../vendor/icon2/iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('../vendor/icon2/iconfont.woff') format('woff'), /* chrome、firefox */ url('../vendor/icon2/iconfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/ url('../vendor/icon2/iconfont.svg#iconfont') format('svg');
+  
+  /* IE9*/
+  /* iOS 4.1- */
+}
+/*-------------------main----------------*/
+#wrapper {
+  padding: 0;
+  margin: 0 auto;
+  width: 100%;
+}
+.top {
+  width: 100%;
+  height: auto;
+}
+#main {
+  width: 100%;
+  min-height: 1800px;
+}
+#container {
+  width: 55%;
+  margin: 0 auto;
+  font-family: "微软雅黑";
+}
+/*----------------article--------------------*/
+#article {
+  position: relative;
+  min-height: 1020px;
+  width: 100%;
+}
+#article header,
+#article .theme_img,
+#article .essay {
+  width: 90%;
+  margin: 30px auto;
+}
+#article h1 {
+  text-align: center;
+  font-weight: bold;
+  padding-top: 30px;
+}
+#article h3 {
+  text-align: right;
+  font-size: 16px;
+}
+#article .theme_img img {
+  display: block;
+  width: 100%;
+}
+.personal_mes {
+  font-size: 14px;
+  color: #999;
+  text-align: center;
+  margin: 40px auto;
+}
+a.author {
+  text-decoration: none;
+  color: #999;
+}
+/*-------------------essay----------------------*/
+.essay {
+  width: 90%;
+  margin: 0 auto;
+  font-size: 16px;
+  line-height: 30px;
+  text-indent: 50px;
+  padding-top: 20px;
+}
+/*-------------------essay end----------------------*/
+/*-------------------stuff----------------------*/
+.stuff {
+  width: 100%;
+  height: 30px;
+  position: absolute;
+  bottom: 0;
+  font-family: "iconfont2";
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
+}
+.stuff li {
+  float: right;
+  font-size: 14px;
+  color: #666;
+  line-height: 30px;
+}
+.stuff li span {
+  padding-right: 10px;
+}
+.stuff li .myLove {
+  cursor: pointer;
+  -webkit-transition: all,.5s;
+  -ms-transition: all,.5s;
+  transition: all,.5s;
+}
+#myLove span:hover {
+  color: #CC0033;
+}
+/*-------------------stuff end----------------------*/
+/*-------------------comment----------------------*/
+#comment {
+  width: 100%;
+  margin-top: 50px;
+}
+/*--------------------form start-------------------*/
+.form {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 70px;
+  position: relative;
+  padding-top: 20px ;
+  border-top: 1px solid #d6d6d6;
+  border-bottom: 1px solid #d6d6d6;
+}
+.form form {
+  width: 100%;
+  height: 100%;
+}
+.com_area_person a {
+  display: inline-block;
+}
+.my_img,
+.head_img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+.my_img {
+  -webkit-transform: translateY(-5px);
+  -ms-transform: translateY(-5px);
+  transform: translateY(-5px);
+}
+.head_img {
+  -webkit-transform: translateY(-30px);
+  -ms-transform: translateY(-30px);
+  transform: translateY(-30px);
+}
+.comment_input {
+  display: inline;
+  width: 91.6%;
+  -webkit-transform: translateX(20px);
+  -ms-transform: translateX(20px);
+  transform: translateX(20px);
+}
+.ex_comment {
+  position: relative;
+  width: 100%;
+  margin-bottom: 10px;
+  height: 50px;
+  display: none;
+}
+.com_btn,
+.del_btn {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  outline: none;
+  border: 1px solid transparent;
+  padding: 6px 12px;
+  background-color: #fff;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-transition: all .5s;
+  -ms-transition: all .5s;
+  transition: all .5s;
+  white-space: nowrap;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.com_btn {
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+.com_btn:hover {
+  background-color: #33CCFF;
+  color: #fff;
+  border: 1px solid transparent;
+}
+.del_btn {
+  -webkit-transform: translateX(-70px);
+  -ms-transform: translateX(-70px);
+  transform: translateX(-70px);
+}
+.del_btn:hover {
+  color: #999;
+}
+.open_comment {
+  display: block;
+}
+/*--------------------form end-------------------*/
+/*--------------------com_area start----------------*/
+.com_area {
+  width: 100%;
+  margin-top: 35px;
+  height: 250px;
+}
+.mes {
+  display: inline-block;
+  line-height: 23px;
+  -webkit-transform: translateX(25px);
+  -ms-transform: translateX(25px);
+  transform: translateX(25px);
+}
+.mes .name {
+  font-weight: bold;
+  font-size: 20px -4;
+}
+.mes .content {
+  font-size: 14px;
+}
+.mes .time {
+  font-size: 12px;
+  color: #b4b4b4;
+}
+/*--------------------com_area end----------------*/
+/*---------------------------pagination start-----------------------*/
+.page {
+  width: 80%;
+  height: 90px;
+  margin: 0 auto;
+}
+.page a {
+  text-decoration: none ;
+  color: #aaa;
+}
+#Pagination a,
+#Pagination span.current {
+  min-width: 50px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  font-size: 18px;
+  display: inline-block;
+  border-radius: 50%;
+}
+#Pagination a {
+  -webkit-transition: all .8s;
+  -ms-transition: all .8s;
+  transition: all .8s;
+  box-sizing: border-box;
+  border: 1px solid transparent;
+}
+#Pagination a:hover {
+  border: 1px solid #aaa;
+}
+#Pagination span.current {
+  margin: 0 5px;
+  border: 1px solid #aaa;
+}
+#Pagination span.prev,
+#Pagination span.next,
+#Pagination a.prev,
+#Pagination a.next {
+  color: #aaa;
+  border: none;
+  font-size: 18px;
+}
+/*---------------------------pagination end-----------------------*/
+/*-------------------comment end----------------------*/

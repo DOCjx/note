@@ -1,0 +1,84 @@
+@utf-8;
+@licolor: #dfdcda;
+@cubli: cubic-bezier(0.85,-0.01, 0.15, 1.41);
+@cubli-time: .3s;
+@content-heigth: 319px;
+@h1: 319px;
+@h2: @h1*2;
+#shenghuo h3
+{
+  font-size: 25px;
+  .line
+  {
+    color: #dd5862;
+    border-left: 3px solid #dd5862;
+    padding-left: 20px;
+  }
+}
+#shenghuo .art-area ul
+{
+  li
+  {
+    width: 80%;
+    height: 36px;
+    text-align: center;
+    line-height: 50px;
+    border-left: 1px solid @licolor;
+    a:hover
+    {
+      color: #2BDE73;
+      text-decoration: underline;
+    }
+
+  }
+}
+.font-active
+{
+  color: #2BDE73!important;
+  text-decoration: underline!important;
+
+}
+.border-active
+{
+  border-left: 2px solid #2BDE73!important;
+}
+.scoll
+{
+  position: relative;
+  top: 100%;
+}
+#shenghuo .art-area
+{
+  overflow: hidden;
+  height: @content-heigth;
+}
+#shenghuo .art-area .art-content,
+{
+  position: relative;
+  transition: all @cubli-time @cubli ;
+  height: @content-heigth;
+  z-index: 9999;
+}
+#shenghuo .art-content-hidden1
+{
+  position: relative;
+  transition: all @cubli-time @cubli ;
+  height: @content-heigth;
+  z-index: 999;
+}
+#shenghuo .art-content-hidden2
+{
+  position: relative;
+  transition: all @cubli-time @cubli ;
+  z-index: 99;
+  height: @content-heigth;
+  bottom: @h1;
+}
+#shenghuo .art-content-hidden3
+{
+  position: relative;
+  transition: all @cubli-time @cubli ;
+  height: @content-heigth;
+  z-index: 9;
+  bottom: @h2;
+}

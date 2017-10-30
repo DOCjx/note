@@ -1,0 +1,64 @@
+<script export="header" type="text/template">
+    <div class="index-top">
+        <div class="nav-wrap">
+            <div class="logo">
+                <img src="public/images/logoblue.png" alt="">
+            </div>
+            <div class="top-nav p-r">
+                <div class="navcatebtn p-a">
+                    <i class="list-btn icon-font">&#xe616;</i>
+                    <span class="list">就业方向</span>
+                </div> 
+                <div class="catedialog p-a"> 
+                    <div class="curbg"></div>  
+                    {{ it.topicList.forEach(function(item) { }}
+                        <div class="item" data-go-part-reload="/c/app/side&id={{=item.id}}">
+                            <div class="inn">
+                                <a href="javascript:;">{{=item.name}}</a>
+                                <p>
+                                    {{item.children.forEach(function(item_children){}}
+                                        <a href="javascript:;">{{=item_children.name}}</a>
+                                    {{});}}
+                                </p>
+                            </div> 
+                        </div>
+                    {{ });}}
+                </div>
+                <div class="mainnav">
+                    <ul>
+                        <li><a href="javascript:;" data-go-route="/c/app/init">首页</a></li>
+                        <li><a href="javascript:;" data-go-route="/c/app/blog">博客</a></li>
+                        <li><a href="javascript:;" data-go-route="/c/app/contact">联系</a></li>
+                       
+                    </ul>
+                </div>  
+                <div class="search">
+                    <i class="search-btn icon-font">&#xe797;</i>
+                    <input type="text" name="" id="">
+                </div>
+                <div class="github">
+                    <i class="github-icon icon-font">&#xe6a9;</i>
+                    <span class="list">Github</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="pic-con">
+            <div class="side-container">
+                <div class="side-wrap">
+                    <img src="public/images/pic.webp" alt="">
+                    <ul>
+                        <li><a href="javascript:;">如何组织线上的静态资源</a></li>
+                        <li><a href="javascript:;">浅谈static zombine</a></li>
+                        <li><a href="javascript:;">我的RSS订阅列表</a></li>
+                        <li><a href="javascript:;">前端模块化杂谈</a></li>
+                        <li><a href="javascript:;">coffeeScript编译器(一)</a></li>
+                    </ul>
+                    <div class="more">
+                        <i class="more-btn icon-font">&#xe618;</i>
+                        <span>查看更多</span>
+                    </div>
+                </div>
+            </div>
+    </div>
+</script>

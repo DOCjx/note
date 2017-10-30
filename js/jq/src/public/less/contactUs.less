@@ -1,0 +1,46 @@
+@base-font-size: 2px;
+@title-margin: 50px;
+.contactUs {
+  padding: 50px 0 0 200px;
+  .col-md-3 {
+    float: right;
+    .right-nav {
+      font-size: @base-font-size*15;
+      padding: 100px 0 0 0;
+      ul li {
+        list-style-type: none;
+      }
+      .active a{
+        color: #0000ff;
+      }
+      ul li a{
+        text-decoration: none;
+        color: #000000;
+      }
+      position: fixed;
+      top: 20px;
+
+    }
+  }
+  .col-md-9 {
+    .left-content {
+      font-size: @base-font-size*12;
+      .red-line{
+        border-left: 4px solid red;
+      }
+      .homyit-address {
+        padding-top: @title-margin;
+        height: 900px;
+      }
+      .student-join {
+        padding-top: @title-margin;
+        height: 900px;
+      }
+      .customer-contact {
+        padding-top: @title-margin;
+        height: 900px;
+      }
+    }
+  }
+
+}

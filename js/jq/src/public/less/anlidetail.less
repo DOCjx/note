@@ -1,0 +1,126 @@
+/* 最外层大框*/
+.wrapper{
+  min-height: 1000px;
+  margin: 0 auto 30px;
+
+  width: 1170px;
+  &:after{
+    content: "";
+    clear: both;
+    display:block;
+    width: 0;
+    height: 0;
+    visibility:hidden;
+  }
+  /*左侧文章页面*/
+  .anlidetail {
+    float: left;
+    width: 75%;
+    article{
+      h1 {
+        text-align: center;
+        font-family: "微软雅黑";
+      }
+      p {
+        text-indent: 2em;
+        min-height: 500px;
+        line-height: 2;
+        padding: 20px 45px;
+        img {
+          width: 110%;
+          margin-left: -44px;
+          padding: 0;
+        }
+      }
+    }
+    .projectadd{
+      padding: 20px 45px;
+      a:hover{
+        text-decoration: none;
+      }
+      .container article p {
+        font-size: 18px;
+        font-weight: 300;
+        color: #404040;
+        -webkit-font-smoothing: antialiased;
+      }
+    }
+    .function{
+      #you {
+        opacity: 0;
+      }
+      #i {
+        content: "";
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        margin-left: -33px;
+        overflow: hidden;
+        background: url('/public/images/love.png') 0 50%;
+        cursor: pointer;
+      }
+      #you:checked + #i {
+        animation: love steps(28) .8s 1 both;
+      }
+      @keyframes love {
+        0% {
+          background-position: left;
+        }
+        100% {
+          background-position: right;
+        }
+      }
+      span {
+        display: inline-block;
+        height: 50px;
+        width: 50px;
+        text-align: center;
+        line-height: 50px;
+        margin: 0 15px;
+      }
+      .function-center {
+        width: 250px;
+        margin: 0 auto;
+      }
+      a {
+        display: inline-block;
+        padding: 0;
+        height: 50px;
+        width: 50px;
+        color: #71777f;
+        text-decoration: none;
+        border-radius: 50%;
+        background-color: #f0f8ff;
+        font-size: 15px;
+        vertical-align: middle;
+        text-align: center;
+        transition: all ease .7s;
+        border: 2px solid #eee;
+        &:hover{
+          background-color: #404040;
+          color: #fff;
+        }
+      }
+    }
+  }
+  .navside{
+    background: red;
+    width: 30px;
+    margin-left: 75%;
+    position: relative;
+    .project-sidebars {
+      position: absolute;
+      left: 30px;
+      li{
+        width: auto;
+        a{
+          white-space:nowrap;
+        }
+      }
+    }
+  }
+}
+
+
+
+

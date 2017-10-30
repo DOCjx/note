@@ -1,0 +1,163 @@
+@font-face {
+  font-family: 'iconfont';
+  src: url('../vendor/icon/iconfont.eot');
+  src: url('../vendor/icon/iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('../vendor/icon/iconfont.woff') format('woff'), /* chrome、firefox */ url('../vendor/icon/iconfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/ url('../vendor/icon/iconfont.svg#iconfont') format('svg');
+  
+  /* IE9*/
+  /* iOS 4.1- */
+}
+body,
+ul {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+a {
+  text-decoration: none;
+}
+li {
+  list-style: none;
+}
+header.header {
+  width: 100%;
+  height: 500px;
+  position: relative;
+  background: url(/public/images/laptop75.jpg) no-repeat;
+  background-size: 100% 500px;
+}
+/*--------------------------------nav start----------------------------*/
+.positionFixed {
+  position: fixed;
+}
+.positionAbsolute {
+  position: absolute;
+}
+#nav {
+  width: 100%;
+  height: 60px;
+  z-index: 1;
+}
+.navTop {
+  top: 0;
+  -pie-background-color: #010101;
+  background-color: #010101;
+  -webkit-transition: all .5s;
+  -ms-transition: all .5s;
+  transition: all .5s;
+}
+.center {
+  margin: 0 auto;
+  width: 1170px;
+  height: 100%;
+  position: relative;
+}
+.logo,
+.three,
+.github {
+  display: inline-block;
+  height: 60px;
+  line-height: 60px;
+  font-family: "iconfont" !important;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
+}
+.logo,
+.three,
+.nav_menu,
+.github {
+  position: relative;
+}
+.logo {
+  -webkit-transform: translateY(-26px);
+  -ms-transform: translateY(-26px);
+  transform: translateY(-23px);
+}
+.logo img {
+  width: 170px;
+}
+.three {
+  margin-left: 10px;
+  -webkit-transform: translateY(-25px);
+  -ms-transform: translateY(-25px);
+  transform: translateY(-25px);
+}
+.three a {
+  text-decoration: none;
+  color: #eee;
+}
+.nav_menu {
+  left: 50px;
+  display: inline-block;
+  width: 500px;
+  height: 60px;
+  font-family: "YouYuan";
+  transform: translateY(-2px);
+  -ms-transform: translateY(-2px);
+  -webkit-transform: translateY(-2px);
+}
+.nav_menu li {
+  float: left;
+  text-align: center;
+  font-weight: bold;
+  width: 15%;
+  font-size: 20px;
+}
+.nav_menu li a {
+  display: block;
+  line-height: 60px;
+  color: #eee;
+  text-decoration: none;
+}
+.nav_menu li a:hover,
+.github a:hover,
+.three a:hover {
+  -ms-transition: color .5s;
+  -webkit-transition: color .5s;
+  transition: color .5s;
+  color: #FF9900;
+}
+.github {
+  position: absolute;
+  right: 0;
+  font-size: 20px;
+}
+.github img {
+  vertical-align: middle;
+  padding-right: 10px;
+}
+.github a {
+  display: inline-block;
+  color: #eee;
+  height: 60px;
+  text-decoration: none;
+  -webkit-transform: translateY(-5px);
+  -ms-transform: translateY(-5px);
+  transform: translateY(-5px);
+}
+.github a b {
+  font-size: 30px;
+  padding-right: 10px;
+}
+.github a strong {
+  font-family: "微软雅黑";
+  font-size: 13px;
+  font-weight: lighter;
+  display: inline-block;
+  -ms-transform: translateY(-2px);
+  -webkit-transform: translateY(-2px);
+  transform: translateY(-2px);
+}
+.three a b {
+  font-size: 22px;
+}
+.hide_nav {
+  top: -60px;
+}
+.change_color {
+  background-color: #010101;
+}
+.hide_color {
+  background-color: rgba(1, 1, 1, 0);
+}
+/*-------------------nav end----------------*/

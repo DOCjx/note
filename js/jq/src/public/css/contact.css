@@ -1,0 +1,155 @@
+@media (max-width: 1050px) {
+  .r-content {
+    display: none;
+  }
+}
+.contactUs {
+  width: 1170px;
+  margin: auto;
+  overflow: auto;
+  font-family: "微软雅黑";
+}
+.contactUs .col-md-2 .r-content {
+  font-size: 16px;
+  padding-top: 100px;
+}
+.contactUs .col-md-2 .r-content .right-nav {
+  position: fixed;
+  top: 100px;
+}
+.contactUs .col-md-2 .r-content ul li {
+  line-height: 40px;
+  list-style-type: none;
+  box-sizing: border-box;
+  padding-left: 60px;
+}
+.contactUs .col-md-2 .r-content ul li a {
+  text-decoration: none;
+  color: #000000;
+}
+.contactUs .col-md-2 .r-content .active {
+  padding-left: 56px;
+}
+.contactUs .col-md-2 .r-content .active a {
+  color: red;
+}
+.contactUs .col-md-2 .r-content .active a:before {
+  content: "|";
+}
+.contactUs .col-md-10 .left-content {
+  font-size: 16px;
+}
+.contactUs .col-md-10 .left-content .red-line {
+  border-left: 6px solid red;
+}
+.contactUs .col-md-10 .left-content .red-line h3 {
+  font-weight: bolder;
+}
+.contactUs .col-md-10 .left-content .homyit-address {
+  padding-top: 20px;
+}
+.contactUs .col-md-10 .left-content .homyit-address .h-block {
+  padding-top: 20px;
+  text-align: center;
+}
+.contactUs .col-md-10 .left-content .student-join {
+  padding-top: 20px;
+}
+.contactUs .col-md-10 .left-content .student-join .s-content {
+  margin: auto;
+  width: 80%;
+  color: #000;
+  font-size: 20px;
+  text-align: inherit;
+}
+.contactUs .col-md-10 .left-content .student-join .s-content .detail-all {
+  margin-top: 36px;
+  height: auto;
+}
+.contactUs .col-md-10 .left-content .student-join .s-content .detail-all p {
+  text-indent: 2em;
+}
+.contactUs .col-md-10 .left-content .student-join .s-content .bot-logo {
+  height: 130px;
+}
+.contactUs .col-md-10 .left-content .student-join .s-content .bot-logo img {
+  float: right;
+  width: 100px;
+  height: 100px;
+}
+.contactUs .col-md-10 .customer-contact {
+  padding-top: 20px;
+}
+.contactUs .col-md-10 .customer-contact .c-block {
+  font: 400 15px/16px "Open Sans", Helvetica, Arial, sans-serif;
+  line-height: 28px;
+  color: #777;
+}
+.contactUs .col-md-10 .customer-contact .c-block .form-div {
+  background: #F9F9F9;
+  max-width: 500px;
+  margin: 50px auto;
+  font-family: "微软雅黑";
+  border-radius: 5px;
+  box-shadow: 0px 0px 15px rgba(75, 75, 75, 0.3);
+}
+.contactUs .col-md-10 .customer-contact .c-block .form-div h3 {
+  padding: 20px 0 0 30px;
+  color: #ff9966;
+}
+.contactUs .col-md-10 .customer-contact .c-block .form-div h5 {
+  padding: 0 0 0 30px;
+}
+.contactUs .col-md-10 .customer-contact .c-block #contact {
+  padding: 10px 70px 30px;
+}
+.contactUs .col-md-10 .customer-contact .c-block #contact fieldset {
+  border: medium none;
+  margin: 0 0 10px;
+}
+.contactUs .col-md-10 .customer-contact .c-block #contact .input {
+  width: 100%;
+  border: 1px solid #CCC;
+  background: #FFF;
+  border-radius: 5px;
+  margin: 5px 5px;
+  padding: 4px;
+}
+.contactUs .col-md-10 .customer-contact .c-block #contact input {
+  width: 100%;
+  border: 1px solid #CCC;
+  background: #FFF;
+  border-radius: 5px;
+  margin: 5px 5px;
+  padding: 4px;
+}
+.contactUs .col-md-10 .customer-contact .c-block #contact textarea {
+  width: 100%;
+  border: 1px solid #CCC;
+  background: #FFF;
+  border-radius: 5px;
+  margin: 5px 5px;
+  padding: 4px;
+  height: 80px;
+  resize: none;
+}
+.contactUs .col-md-10 .customer-contact .c-block #contact input:focus,
+.contactUs .col-md-10 .customer-contact .c-block #contact textarea:focus {
+  outline: 0;
+  border: 1px solid #00a3cc;
+}
+.contactUs .col-md-10 .customer-contact .c-block #contact button {
+  cursor: pointer;
+  width: 100%;
+  border: none;
+  background: #00a3cc;
+  color: #FFF;
+  border-radius: 5px;
+  padding: 5px;
+}
+.contactUs .col-md-10 .customer-contact .c-block #contact button:hover {
+  background: #0089b7;
+  -webkit-transition: background 0.3s ease-in-out;
+  -moz-transition: background 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out;
+}
