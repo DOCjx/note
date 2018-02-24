@@ -206,18 +206,18 @@ const arrayToTree = (array, id = 'id', pid = 'pid', children = 'children') => {
 }
 //深度克隆
 const deepClone = function(obj) {
-    const isClass = function(o) {
+    const isClass = o => {
         if(o===null) return "Null";
         if(o===undefined) return "Undefined";
-        return Object.prototype.toString.call(o).slice(8,-1);
+        return Object.prototype.toString.call(o).slice(8, -1);
     }
 
-    var result = {},
-        oClass = isClass(obj);
+    let res = {},
+          oClass = isClass(obj);
     if (oClass === "Object") {
-        result = {};
+        res = {};
     } else if (oClass === "Array") {
-        result = [];
+        res = [];
     } else {
         return obj;
     }
@@ -225,13 +225,13 @@ const deepClone = function(obj) {
         var copy = obj[key];
         if(isClass(copy) == "Object" || isClass(copy) == "Array") {
             //递归实现更深层的深度复制
-            result[key] = arguments.callee(copy);
+            res[key] = arguments.callee(copy);
         }else {
-            result[key] = obj[key];
+            res[key] = obj[key];
         }
     }
-    return result;
-}
+    return res;
+};
 //简单克隆
 function simpleClone(obj) {
     var result={};

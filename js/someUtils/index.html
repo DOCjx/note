@@ -45,8 +45,8 @@
             //数组转树结构
             // console.log('arrayToTree:', arrayToTree(arr));
             //克隆一个数组
-            const oNew = simpleClone(arr);
-            // const oNew = deepClone(arr);
+            // const oNew = simpleClone(arr);
+            const oNew = deepClone(arr);
             arr[1].action = function() {
                 console.log('pid:', this.pid);
             };

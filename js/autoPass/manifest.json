@@ -1,0 +1,20 @@
+{
+  "manifest_version": 2,
+  "browser_action": {
+    "default_icon": "./icon/fix.png",
+    "default_title": "一键登入校园网\n\n1.右键点击设置选项。\n2.连接jxnu_stu或者jxnu_tea\n3.地址栏输入：219.229.251.2\n4.左键点击即可自动登录！\n\n           auth:稻壳er"
+  },
+  "permissions": [
+    "activeTab"
+  ],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "options_page": "options.html",
+
+  "name": "一键登入校园网",
+  "description": "在选项里设置好校园网信息后就可以一键登入了 ^_^",
+  "version": "1.0",
+  "web_accessible_resources": [ "content_script.js" ]
+}

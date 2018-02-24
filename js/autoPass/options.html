@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="option.css">
+        <script src="option.js"></script>
+    </head>
+    <body>
+        <div id="content">
+            <h3>校园网登录设置</h3>
+            <form action="#" target="ifm">
+                <input type="text" id="user-id" autofocus required placeholder="学号/工号">
+                <span>
+                    <input type="password" id="pwd" required placeholder="密码">
+                    <div id="pwd-control" style="background-color: green;">隐藏</div>
+                </span>
+                <span>
+                    <select name="domain" id="blone" value="" style="font-size: 12px;height: 30px;">
+                        <option value="@cucc">联通校园宽带</option>
+                        <option value="@cmcc">移动校园宽带</option>
+                        <option value="@jxnu">校园宽带</option>
+                        <option value="@ctcc">电信校园宽带</option>
+                    </select>
+                    <div>老师用户可以不用填写！</div>
+                </span>
+                <div id="mes" style="display: none;">
+                    设置成功！
+                </div>
+                <div>
+                    <button id="set">确认</button>
+                    <button type="reset" id="reset">重置</button>
+                </div>
+            </form>
+            <iframe name="ifm" id="ifm" style="display:none"></iframe>
+        </div>
+    </body>
+</html>
