@@ -1,0 +1,1 @@
+"use strict";chrome.runtime.onMessage.addListener(function(a,b,c){var d=a.fromData;if(d){var e=d.userId,f=d.pwd,g=d.blone;document.getElementById("loginname").value=e,document.getElementById("password").value=f,document.getElementsByTagName("select")[0].value=g,document.getElementsByClassName("W_btn_g")[0].click(),c({mes:"success"})}else alert("请再次点击图标进行设置！"),c({mes:"error"})});

@@ -1,4 +1,3 @@
-console.log("content_script");
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     const {fromData} = request;
     if(fromData){
