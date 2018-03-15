@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+    <style>
+        .trangel{
+            width: 85px;
+            height: 25px;
+            box-sizing: border-box;
+            border-top: 1px solid #e5e5e5;
+            border-bottom: 1px solid #e5e5e5;
+            padding-left: 8px;
+            color: #666;
+            text-align: center;
+            position: relative;
+            font-size: 12px;
+            line-height: 23px;
+            float: left;
+            margin-left: 9px;
+        }
+        .trangel-pre,.trangel-next{
+            width: 0;
+            height: 0;
+            display: inline-block;
+            position: absolute;
+            border-top: 12px solid transparent;
+            border-bottom: 12px solid transparent;
+            border-right: 8px solid transparent;
+            border-left: 8px solid #e5e5e5;
+        }
+        .trangel-pre{
+            z-index: 9;
+            left: 0;
+        }
+        .trangel-next{
+            right: -16px;
+        }
+        .trangel-pre:before,.trangel-next:before{
+            content: "";
+            width: 0;
+            height: 0;
+            display: inline-block;
+            position: absolute;
+            border-top: 12px solid transparent;
+            border-bottom: 12px solid transparent;
+            border-right: 8px solid transparent;
+            left: -9px;
+            top: -12px;
+        }
+        .trangel-pre:before{
+            border-left: 8px solid #fff;
+        }
+        #trangel-box{
+            margin-top: 20px;
+        }
+        .trangel-fist{
+            border-left: 1px solid #e5e5e5;
+        }
+        .trangel-last{
+            width: 93px;
+            border-right: 1px solid #e5e5e5;
+        }
+        #trangel-box #finished{
+            float: left;
+            width: 95px;
+            height: 25px;
+            box-sizing: border-box;
+            border: 1px solid #d0021b;
+            margin-left: 9px;
+            text-align: center;
+            line-height: 25px;
+            font-size: 12px;
+            color: #d0021b;
+            display: none;
+        }
+        .trangel-next:before{
+            border-left: 8px solid #fff;
+        }
+    </style>
+    <style></style>
+</head>
+<body>
+    <div id="trangel-box">
+        <div class="trangel trangel-fist WAIT_ACCEPT">
+            草稿
+            <div class="trangel-next"></div>
+        </div>
+        <div class="trangel WAIT_DELIVER">
+            <div class="trangel-pre"></div>
+            待审核
+            <div class="trangel-next"></div>
+        </div>
+        <div class="trangel STOCK_IN">
+            <div class="trangel-pre"></div>
+            待复核
+            <div class="trangel-next"></div>
+        </div>
+        <div class="trangel trangel-last DELIVERED">
+            <div class="trangel-pre"></div>
+            待复核
+        </div>
+        <div id="finished" class="active">
+            已终止
+        </div>
+    </div>
+    <script type="text/javascript">
+        window.onload = () => {
+            const date =  [{
+                "name":"待接单",
+                "status":"WAIT_ACCEPT",
+                "isShadowed":true
+            },{
+                "name":"待发货",
+                "status":"WAIT_DELIVER",
+                "isShadowed":true,
+                "isCurrentStatus":true
+            },{
+                "name":"验货入库",
+                "status":"STOCK_IN"
+            },{
+                "name":"已完成",
+                "status":"DELIVERED"
+            }];
+            const parseState = arr => {
+                if(arr.length == 1){
+                    const el = document.getElementById("finished");
+                    el.style.display = "inline-block";
+                    return;
+                }
+                for(let v of arr){
+                    const el = document.getElementsByClassName(v.status)[0];
+                    el.style.backgroundColor = v.isCurrentStatus ? "#108ee9" : v.isShadowed ? "#f6f6f6" : "";
+                    if(v.isCurrentStatus) el.style.color = "#fff";
+                    if(v.isCurrentStatus || v.isShadowed){
+                        const head = document.getElementsByTagName("head")[0];
+                        const style = [...document.getElementsByTagName("style")].pop();
+                        if(!v.isCurrentStatus && v.isShadowed) style.innerText += `.${v.status} .trangel-next:before{border-left: 8px solid #f6f6f6;}`;
+                        if(v.isCurrentStatus) style.innerText += `.${v.status} .trangel-next:before{border-left: 8px solid #108ee9;}`;
+                    }
+
+                }
+            };
+            parseState(date);
+        };
+    </script>
+</body>
+</html>
