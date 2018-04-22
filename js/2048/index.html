@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>小游戏</title>
+    <style type="text/css">
+        #app{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        th{
+            text-align: center;
+        }
+        td{
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            border: solid 1px #eee;
+        }
+        #info{
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .normal{
+            background: gray;
+        }
+        .fist{
+            background: yellow;
+        }
+        .second{
+            background: red;
+        }
+        .third{
+            background: blue;
+        }
+        .fourth{
+            background: green;
+        }
+        .fifth{
+            background: orange;
+        }
+        .sixth{
+            background: blueviolet;
+        }
+        .seventh{
+            background: aqua;
+        }
+        .eighth{
+            background: indianred;
+        }
+        .ninth{
+            background: greenyellow;
+        }
+        .tenth{
+            background: hotpink;
+        }
+        .win{
+            box-shadow:0px 0px 8px #f00;
+        }
+    </style>
+</head>
+<body>
+    <div id="app"></div>
+    <script type="text/javascript">
+        const Game = {
+            win: 2048,
+            isGameOver: false,
+            count: 0,
+            size: 0,//棋盘大小
+            state: [],//记录操作结果
+            colors: {
+                0: "normal",
+                2: "fist",
+                4: "second",
+                8: "third",
+                16: "fourth",
+                32: "fifth",
+                64: "sixth",
+                128: "seventh",
+                256: "eighth",
+                512: "ninth",
+                1024: "tenth"
+            },
+            action: {//处理操作事件
+                up(){
+                    let translated = this.utils.translate.call(this, this.state),//转置成列数组，公用行数组的计算方法
+                        calculated = this.utils.calculate.call(this, translated);
+                    for(let i = 0; i < this.size; i++){//计算移位后填充回原来的数组大小
+                        this.state[i] = [...calculated[i], ...new Array(this.size - calculated[i].length).fill(0)];
+                    }
+                    this.state = this.utils.translate.call(this, this.state);//转置回行数组
+                },
+                down(){
+                    let translated = this.utils.translate.call(this, this.state),
+                        calculated = this.utils.calculate.call(this, translated);
+                    for(let i = 0; i < this.size; i++){
+                        this.state[i] = [...new Array(this.size - calculated[i].length).fill(0), ...calculated[i]];
+                    }
+                    this.state = this.utils.translate.call(this, this.state);
+                },
+                left(){
+                    const next = this.utils.calculate.call(this, this.state);
+                    for(let i = 0; i < this.size; i++){
+                        this.state[i] = [...next[i], ...new Array(this.size - next[i].length).fill(0)];
+                    }
+                },
+                right(){
+                    const next = this.utils.calculate.call(this, this.state);
+                    for(let i = 0; i < this.size; i++){
+                        this.state[i] = [...new Array(this.size - next[i].length).fill(0), ...next[i]];
+                    }
+                },
+                addEvent(){
+                    const action = this.action,
+                          that = this;
+                    //键盘事件
+                    document.onkeydown = (event) => {
+                        if(that.isGameOver) return;
+                        const e = event || window.event || arguments.callee.caller.arguments[0];
+                        switch(e.keyCode){
+                            case 37:
+                                action.left.call(that);
+                                break;
+                            case 38:
+                                action.up.call(that);
+                                break;
+                            case 39:
+                                action.right.call(that);
+                                break;
+                            case 40:
+                                action.down.call(that);
+                                break;
+                            default:
+                                return false;
+                        }
+                        if(that.utils.isEnd.call(that)){
+                            that.isGameOver = true;
+                        }else{
+                            that.count++;
+                            that.utils.add.call(that);//未结束游戏则随机生成一个数
+                        }
+                        if(that.utils.isEnd.call(that)){//判断添加一个数后是否结束游戏
+                            that.isGameOver = true;
+                        }
+                        that.render();
+                    };
+                    //适配移动端的触摸事件
+                    document.addEventListener("touchstart", ev => {
+                        const e = ev || window.event;
+                        e.preventDefault();
+                        const touch = e.touches[0];
+                        startX = touch.pageX;
+                        startY = touch.pageY;
+                    }, {passive: false});
+                    document.addEventListener("touchmove", ev => {
+                        const e = ev || window.event;
+                        e.preventDefault();
+                        const touch = e.touches[0];
+                        endX = touch.pageX;
+                        endY = touch.pageY;
+                    }, {passive: false});
+                    document.addEventListener("touchend", ev => {
+                        if(that.isGameOver) return;
+                        let touchDirection = (endY - startY) > 0 ? 1 : -1,//得到触摸方向
+                            scrollTranslation = (endX - startX) > 0 ? 1 : -1,
+                            scrollDistanceY = Math.abs(endY - startY),//触摸达到阈值才触发事件
+                            scrollDistanceX = Math.abs(endX - startX);
+                        if(scrollDistanceY > 40 && (scrollDistanceY > scrollDistanceX)){
+                            if(touchDirection == 1){
+                                action.down.call(that);
+                            }else{
+                                action.up.call(that);
+                            }
+                        }
+                        if(scrollDistanceX > 40 && (scrollDistanceX > scrollDistanceY)){
+                            if(scrollTranslation == 1){
+                                action.right.call(that);
+                            }else{
+                                action.left.call(that);
+                            }
+                        }
+                        if(that.utils.isEnd.call(that)){
+                            that.isGameOver = true;
+                        }else{
+                            that.count++;
+                            that.utils.add.call(that);
+                        }
+                        if(that.utils.isEnd.call(that)){
+                            that.isGameOver = true;
+                        }
+                        that.render();
+                    }, {passive: false});
+                }
+            },
+            utils: {//助手
+                add(){//找寻空位置添加数字 2|4
+                    const emptyPos = [];
+                    for(let i = 0; i < this.size; i++){
+                        for(let j = 0; j < this.size; j++){
+                            !this.state[i][j] && emptyPos.push([i, j]);
+                        }
+                    }
+                    if(!emptyPos.length){
+                        this.count--;
+                        return;
+                    }
+                    const pos = emptyPos[Math.floor(Math.random() * emptyPos.length)];
+                    this.state[pos[0]][pos[1]] = Math.floor(Math.random() * 2 + 1) * 2;
+                },
+                isEnd(){//判断是否还能操作
+                    let state = this.state;
+                    for(let i = 0; i < this.size; i++){
+                        for(let j = 0; j < this.size; j++){
+                            const up = i - 1,
+                                  down = i + 1,
+                                  left = j - 1,
+                                  right = j + 1,
+                                  value = state[i][j];
+                            //当数组中存在空位置时未结束
+                            if(!value){
+                                return false;
+                            }
+                            //当数组中没有空位子时，存在邻居和它的值相等则未结束
+                            if(up >= 0 && state[up][j] == value){
+                                return false
+                            }
+                            if(down < this.size && state[down][j] == value){
+                                return false;
+                            }
+                            if(left >= 0 && state[i][left] == value){
+                                return false;
+                            }
+                            if(right < this.size && state[i][right] == value){
+                                return false;
+                            }
+                        }
+                    }
+                    return true;
+                },
+                initState(){//初始化棋盘数组状态
+                    for(let i = 0; i < this.size; i++){
+                        this.state.push(new Array(this.size).fill(0));
+                    }
+                },
+                getSum(){//获得总和
+                    let sum = 0;
+                    for(let v of this.state){
+                        sum += v.reduce((tmp, item) => item ? tmp + item : tmp, 0);
+                    }
+                    return sum;
+                },
+                translate(arr){//奖行数组转置成列数组，两次转换后会回到原来的数组
+                    const res = [];
+                    for(let i = 0; i < this.size; i++){
+                        for(let j = 0; j < this.size; j++){
+                            if(!res[j]){
+                                res[j] = [];
+                            }
+                            res[j][i] = arr[i][j];
+                        }
+                    }
+                    return res;
+                },
+                calculate(arr){//计算操作后剩余元素
+                    const res = [];
+                    for(let i = 0; i < this.size; i++){
+                        const line = [];
+                        for(let j = 0; j < this.size; j++){
+                            if(arr[i][j]){
+                                let k = j + 1;
+                                while(!arr[i][k] && k < arr.length){
+                                    k++;
+                                }
+                                if(arr[i][j] == arr[i][k]){
+                                    line.push(arr[i][j] * 2);
+                                    j = k;
+                                }else{
+                                    line.push(arr[i][j]);
+                                }
+                            }
+                        }
+                        res.push(line);
+                    }
+                    return res;
+                }
+            },
+            render(){//渲染操作结果
+                const app = document.getElementById("app"),
+                      table = document.createElement("table"),
+                      th = document.createElement("tr"),
+                      lastTr = document.createElement("tr"),
+                      info = document.createElement("tr"),
+                      lastTrLen = Math.floor(this.size / 2);
+                th.innerHTML = `<th colspan="${this.size}"><h1>${this.win}小游戏</h1></th>`;
+                lastTr.innerHTML = `<td colspan="${lastTrLen}">步数：${this.count}</td><td colspan="${this.size % 2 == 0 ? lastTrLen : lastTrLen + 1}">总分：${this.utils.getSum.call(this)}</td>`;
+                table.appendChild(th);
+                for(let value of this.state){//渲染棋盘
+                    const tr = document.createElement("tr");
+                    for(let v of value){
+                        const td = document.createElement("td"),
+                              win = v == this.win ? " win" : "";
+                        if(v == this.win){//判断是否赢得游戏
+                            this.isGameOver = true;
+                        }
+                        td.setAttribute("class", this.colors[v] + win);
+                        td.innerHTML = v || "";
+                        tr.appendChild(td);
+                    }
+                    table.appendChild(tr);
+                }
+                table.appendChild(lastTr);
+                app.innerHTML = null;
+                app.appendChild(table);
+                if(this.isGameOver){
+                    info.innerHTML = `<td colspan="${this.size}"><span id="info">游戏结束！点我重新开始！</span></td>`;
+                    table.appendChild(info);
+                    document.getElementById("info").onclick = (e) => {//重新开始i游戏
+                        this.init(this.size);
+                    };
+                }
+            },
+            init(size){//初始化游戏
+                // this.win = 32;//设置赢的条件
+                this.isGameOver = false;
+                this.count = 0;
+                this.size = size;
+                this.state = [];
+                this.utils.initState.call(this);
+                this.utils.add.call(this);
+                this.utils.add.call(this);
+                this.render();
+                this.action.addEvent.call(this);
+            }
+        };
+        Game.init(4);
+    </script>
+</body>
+</html>
