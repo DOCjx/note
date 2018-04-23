@@ -147,6 +147,7 @@
                         that.render();
                     };
                     //适配移动端的触摸事件
+                    let startX = startY = endX = endY = 0;
                     document.addEventListener("touchstart", ev => {
                         const e = ev || window.event;
                         e.preventDefault();
@@ -162,7 +163,7 @@
                         endY = touch.pageY;
                     }, {passive: false});
                     document.addEventListener("touchend", ev => {
-                        if(that.isGameOver) return;
+                        if(that.isGameOver || !endX || !endY) return;
                         let touchDirection = (endY - startY) > 0 ? 1 : -1,//得到触摸方向
                             scrollTranslation = (endX - startX) > 0 ? 1 : -1,
                             scrollDistanceY = Math.abs(endY - startY),//触摸达到阈值才触发事件
@@ -173,13 +174,14 @@
                             }else{
                                 action.up.call(that);
                             }
-                        }
-                        if(scrollDistanceX > 40 && (scrollDistanceX > scrollDistanceY)){
+                        }else if(scrollDistanceX > 40 && (scrollDistanceX > scrollDistanceY)){
                             if(scrollTranslation == 1){
                                 action.right.call(that);
                             }else{
                                 action.left.call(that);
                             }
+                        }else{
+                            return;
                         }
                         if(that.utils.isEnd.call(that)){
                             that.isGameOver = true;
@@ -191,6 +193,7 @@
                             that.isGameOver = true;
                         }
                         that.render();
+                        startX = startY = endX = endY = 0;
                     }, {passive: false});
                 }
             },
@@ -316,9 +319,17 @@
                 if(this.isGameOver){
                     info.innerHTML = `<td colspan="${this.size}"><span id="info">游戏结束！点我重新开始！</span></td>`;
                     table.appendChild(info);
-                    document.getElementById("info").onclick = (e) => {//重新开始i游戏
+                    const infoDOM = document.getElementById("info");
+                    //重新开始i游戏
+                    infoDOM.onclick = (e) => {
                         this.init(this.size);
                     };
+                    //移动端代替点击事件
+                    infoDOM.addEventListener("touchstart", ev => {
+                        const e = ev || window.event;
+                        e.preventDefault();
+                        this.init(this.size);
+                    }, {passive: false});
                 }
             },
             init(size){//初始化游戏
